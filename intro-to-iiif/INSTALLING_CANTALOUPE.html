@@ -405,17 +405,17 @@
 <p>Make sure you have <a href="PREREQUISITES.html#iiif-server-requirements">installed the prerequisites</a>.</p>
 <h2 id="download-cantaloupe">Download Cantaloupe</h2>
 <p>For more information, checkout the <a href="https://medusa-project.github.io/cantaloupe/get-started.html" target="_blank">Cantaloupe getting started guide</a>.</p>
-<p>Download <a href="https://github.com/medusa-project/cantaloupe/releases/download/v3.2.3/Cantaloupe-3.2.3.zip" target="_blank">Cantaloupe v3.2.3</a></p>
+<p>Download <a href="https://github.com/medusa-project/cantaloupe/releases/download/v3.3.1/Cantaloupe-3.3.1.zip" target="_blank">Cantaloupe v3.3.1</a></p>
 <p>Open and extract the zip file to your directory of choosing. We suggest <code>~/Desktop</code>.</p>
 <p>Now change directory to that extracted directory</p>
-<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Desktop/Cantaloupe-3.2.3
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Desktop/Cantaloupe-3.3.1
 </code></pre>
 <h2 id="configure-cantaloupe">Configure Cantaloupe</h2>
 <p>Now lets create a copy of the configuration file:</p>
 <pre><code class="lang-sh">$ cp cantaloupe.properties.sample cantaloupe.properties
 </code></pre>
 <p>Now lets enable the admin panel where we will modify the rest of the settings.</p>
-<p>Scroll to line 14, and change <code>false</code> to <code>true</code>. Also add a password.</p>
+<p>Scroll to line 34, and change <code>false</code> to <code>true</code>. Also add a password.</p>
 <pre><code class="lang-diff"># Enables the Control Panel, at /admin.
 <span class="hljs-deletion">- admin.enabled = false</span>
 <span class="hljs-addition">+ admin.enabled = true</span>
@@ -425,7 +425,7 @@
 </code></pre>
 <p>Save the file.</p>
 <p>Now lets try and start the server. Run this command from your Cantaloupe directory</p>
-<pre><code class="lang-sh">$ java -Dcantaloupe.config=./cantaloupe.properties -Xmx2g -jar Cantaloupe-3.2.3.war
+<pre><code class="lang-sh">$ java -Dcantaloupe.config=./cantaloupe.properties -Xmx2g -jar Cantaloupe-3.3.1.war
 </code></pre>
 <p>Now navigate to <a href="http://127.0.0.1:8182/iiif/2" target="_blank">http://127.0.0.1:8182/iiif/2</a> in your browser.</p>
 <p>You should see this:</p>
@@ -477,7 +477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Installing Cantaloupe IIIF image server","level":"2.1.1","depth":2,"next":{"title":"Pointing your image server at some images","level":"2.1.2","depth":2,"path":"POINTING_YOUR_IMAGE_SERVER.md","ref":"POINTING_YOUR_IMAGE_SERVER.md","articles":[]},"previous":{"title":"Installing a IIIF Server","level":"2.1","depth":1,"path":"IIIF_SERVER.md","ref":"IIIF_SERVER.md","articles":[{"title":"Installing Cantaloupe IIIF image server","level":"2.1.1","depth":2,"path":"INSTALLING_CANTALOUPE.md","ref":"INSTALLING_CANTALOUPE.md","articles":[]},{"title":"Pointing your image server at some images","level":"2.1.2","depth":2,"path":"POINTING_YOUR_IMAGE_SERVER.md","ref":"POINTING_YOUR_IMAGE_SERVER.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"INSTALLING_CANTALOUPE.md","mtime":"2017-03-19T15:09:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-02T22:01:29.929Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Installing Cantaloupe IIIF image server","level":"2.1.1","depth":2,"next":{"title":"Pointing your image server at some images","level":"2.1.2","depth":2,"path":"POINTING_YOUR_IMAGE_SERVER.md","ref":"POINTING_YOUR_IMAGE_SERVER.md","articles":[]},"previous":{"title":"Installing a IIIF Server","level":"2.1","depth":1,"path":"IIIF_SERVER.md","ref":"IIIF_SERVER.md","articles":[{"title":"Installing Cantaloupe IIIF image server","level":"2.1.1","depth":2,"path":"INSTALLING_CANTALOUPE.md","ref":"INSTALLING_CANTALOUPE.md","articles":[]},{"title":"Pointing your image server at some images","level":"2.1.2","depth":2,"path":"POINTING_YOUR_IMAGE_SERVER.md","ref":"POINTING_YOUR_IMAGE_SERVER.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"INSTALLING_CANTALOUPE.md","mtime":"2017-06-08T05:22:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-08T05:47:47.567Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
