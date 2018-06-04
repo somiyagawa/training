@@ -373,14 +373,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../day-three/ranges.html">
+        <li class="chapter " data-level="4.2" data-path="../day-three/annotations-and-annotation-lists.html">
             
-                <a href="../day-three/ranges.html">
+                <a href="../day-three/annotations-and-annotation-lists.html">
             
                     
                         <b>4.2.</b>
                     
-                    Ranges
+                    Annotations, AnnotationLists
             
                 </a>
             
@@ -403,14 +403,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="../day-three/annotations-and-annotation-lists.html">
+        <li class="chapter " data-level="4.4" data-path="../day-three/ranges.html">
             
-                <a href="../day-three/annotations-and-annotation-lists.html">
+                <a href="../day-three/ranges.html">
             
                     
                         <b>4.4.</b>
                     
-                    Annotations, AnnotationLists
+                    Ranges
             
                 </a>
             
@@ -524,38 +524,38 @@
                                 
                                 <h1 id="presentation-api-deep-dive-day-ii-afternoon-session">Presentation API Deep Dive (Day II Afternoon Session)</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Hopefully, through the process of slowly building your own image viewer, two things have become clear; Two things that help explain why something like the IIIF Presentation API exists.</p>
+<p>Hopefully, through the process of slowly building your own image viewer, two things have become clear: two things that help explain why something like the IIIF Presentation API exists.</p>
 <p>1) Image viewers need more than just images.
-They need specific kinds of metadata to orchestrates a user&apos;s complex interaction with a set of images. Data like the order of the images, the ways individual images should be used, metadata about the object represented by a set of images, metadata about individual images.</p>
+They need specific kinds of metadata to orchestrate a user&apos;s complex interaction with a set of images. Data like the order of the images, the ways individual images should be used, metadata about the object represented by a set of images, metadata about individual images.</p>
 <p>2) Image viewers are hard to build. They take time and they take money. If everyone had to build a new image viewer for their unique set of images, the world would be full of thousands of different mediocre viewers that are difficult and expensive to maintain.</p>
-<p>The IIIF community recognized precisely this problem, and proposed standardizing the data that any image view would need. Because viewer applications and their data can b separated, image viewers can be re-used for a data set that is structured according to a standard (or set of rule) that the image viewer understands. The IIIF Presentation API is precisely this standard, and a IIIF compliant viewer is an image viewer that understands and knows how to display data that is structure according to these rules.</p>
+<p>The IIIF community recognized precisely this problem, and proposed standardizing the data that any image view would need. Because viewer applications and their data can be separated, image viewers can be re-used for a data set that is structured according to a standard (or set of rules) that the image viewer understands. The IIIF Presentation API is precisely this standard, and a IIIF compliant viewer is an image viewer that understands and knows how to display data that is structured according to these rules.</p>
 <p>Today, we&apos;re going to look at the &quot;guts&quot; of this standard and learn how to structure our data according to the rules of the IIIF Presentation API.</p>
-<p>First, let&apos;s look at the conceptual model of the IIIF Presentation API and then will begin building a manifest together.</p>
+<p>First, let&apos;s look at the conceptual model of the IIIF Presentation API and then we will begin building a manifest together.</p>
 <h2 id="looking-closer-at-a-manifest">Looking Closer at a Manifest</h2>
 <h3 id="basic-types">Basic Types</h3>
 <p><a href="http://iiif.io/api/presentation/2.1/#basic-types" target="_blank">http://iiif.io/api/presentation/2.1/#basic-types</a></p>
 <p><img src="http://iiif.io/api/presentation/2.1/img/objects.png" alt="manifest basic types"></p>
 <h4 id="the-manifest">The manifest</h4>
 <p>The most fundamental resource type is the Manifest. In the IIIF world you will often here people talking about &quot;manifests&quot;.</p>
-<p>But there is nothing to magical about manifest.</p>
-<p>A manifest is a resource that contains or wraps most of the resources and data and viewer will need.</p>
+<p>But there is nothing too magical about a manifest.</p>
+<p>A manifest is a resource that contains or wraps most of the resources and data that a viewer will need.</p>
 <p>The IIIF Spec Definition reads as follows:</p>
 <blockquote>
 <p>Manifest
 The overall description of the structure and properties of the digital representation of an object. It carries information needed for the viewer to present the digitized content to the user, such as a title and other descriptive information about the object or the intellectual work that it conveys. Each manifest describes how to present a single object such as a book, a photograph, or a statue. <a href="http://iiif.io/api/presentation/2.1/#overview-manifest" target="_blank">http://iiif.io/api/presentation/2.1/#overview-manifest</a></p>
 </blockquote>
 <p>A manifest is most typically encountered as a file that lives on the internet somewhere.
-That file can be given to any IIIF Compliant Viewer. This viewer because it know what to do with data structure according to the IIIF rules can do stuff with that information, specifically it can provide a viewing experience.</p>
-<p>So what kind of resources does a manifest contain? Well lots, but focus on the main one&apos;s we need to get started.</p>
+That file can be given to any IIIF compliant viewer. This viewer, because it know what to do with data structured according to the IIIF rules, can do stuff with that information; specifically it can provide a viewing experience.</p>
+<p>So what kind of resources does a manifest contain? Well lots, but let&apos;s focus on the main one&apos;s we need to get started.</p>
 <h4 id="sequences">Sequences</h4>
-<p>A manifest contains a sequences property which contains an array of sequences that order individual image resources.</p>
+<p>A manifest contains a &quot;sequences&quot; property which contains an array of sequences that order individual image resources.</p>
 <p>The Spec States:</p>
 <blockquote>
 <p>The order of the views of the object. Multiple sequences are allowed to cover situations when there are multiple equally valid orders through the content, such as when a manuscript&#x2019;s pages are rebound or archival collections are reordered. <a href="http://iiif.io/api/presentation/2.1/#overview-sequence" target="_blank">http://iiif.io/api/presentation/2.1/#overview-sequence</a></p>
 </blockquote>
 <p>In most manifests, you will find only one object within the sequences array.</p>
-<p>NOTE: Sequences is removed in the 3.0 spec and is replaced by a property called &quot;Items&quot;</p>
-<p>For the moment, what is important is that an individual sequence (or in 3.0 the items property) takes a list of &quot;Canvases&quot;</p>
+<p>NOTE: Sequences is removed in the 3.0 spec and is replaced by a property called &quot;items&quot;</p>
+<p>For the moment, what is important is that an individual sequence (or in 3.0 the items property) takes a list of &quot;canvases&quot;</p>
 <h4 id="canvas">Canvas</h4>
 <p>The Spec defines a canvas as follows:</p>
 <p>Canvas</p>
@@ -564,7 +564,7 @@ That file can be given to any IIIF Compliant Viewer. This viewer because it know
 </blockquote>
 <p>Why not just call this the image?</p>
 <p>The canvas is an important abstraction. In most advanced viewers, it is not enough just to see the image, we want do things with that image. We want make notes, translations, links, references that connect to various areas of an image.</p>
-<p>But think for a minute. To what do these various kinds of annotations apply? When make a note about figure in an image, am I making a annotation about of set of bits unique to a jpeg image with a fixed some dimensions, or to black and white png image with a different set of dimensions. Generally no, I making an annotation about part of an &quot;image idea&quot; that can be digitally encoded and represented in a lots of different ways. If I want my annotation to show up when I&apos;m viewing a .tiff, .jpg, .png, all with wildly different dimensions I need a higher level of abstraction. This abstraction is the Canvas.</p>
+<p>But think for a minute. To what do these various kinds of annotations apply? When I make a note about a figure in an image, am I making a annotation about of set of bits unique to a jpeg image with fixed dimensions, or to a black and white .png image with a different set of dimensions? Generally no. I&apos;m making an annotation about part of an &quot;image idea&quot; that can be digitally encoded and represented in a lots of different ways. If I want my annotation to show up when I&apos;m viewing a .tiff, .jpg, .png, all with wildly different dimensions, I need a higher level of abstraction. This abstraction is the Canvas.</p>
 <p>Annotations can be associated with a canvas, and then different image resources can be interchangeably associated to that same canvas. In each case, the annotation coordinates and content remain applicable to each image.</p>
 <h4 id="the-content-resources">The Content Resources</h4>
 <p>The last step requires is this association of an image resource with a canvas.</p>
@@ -574,35 +574,76 @@ That file can be given to any IIIF Compliant Viewer. This viewer because it know
 <p>This is done through privileged annotation.</p>
 <h2 id="activity-building-a-manifest">Activity: Building a Manifest</h2>
 <p>So usually all of this goes in one ear and out the other until we start building a manifest.</p>
-<p>While in production, manifests can get very big and are usually machine generated there is not substitute for making one by hand.</p>
+<p>While in production, manifests can get very big and are usually machine generated there is no substitute for making one by hand.</p>
 <p>First, we&apos;re going to do this together.</p>
-<p>Then, we&apos;ll send you off to make your own</p>
+<p>Then, we&apos;ll send you off to make your own.</p>
 <h3 id="group-manifest">Group Manifest</h3>
 <ul>
-<li>Here [add link] I&apos;ve created a bare minimum manifest for us all to share. But you&apos;ll notice, it is very sparse.</li>
+<li>Here I&apos;ve created a bare minimum manifest for us all to share. But you&apos;ll notice, it is very sparse.</li>
 </ul>
-<p>In this activity, we will pose a serious of questions and ask you to look at the IIIF documentation and hunt for an answer.</p>
+<pre><code class="lang-json"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-json sunlight-highlighted"><span class="sunlight-plaintext">
+{
+&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/presentation/2/context.json&quot;,
+&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;https://example.com/my-manifest&quot;,
+&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Manifest&quot;,
+&#xA0;&#xA0;&quot;sequences&quot;:&#xA0;[
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/presentation/2/context.json&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;https://example.com/my-sequence&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Sequence&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;canvases&quot;:&#xA0;[
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;https://example.com/my-canvas/1&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Canvas&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;height&quot;:&#xA0;5000,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;width&quot;:&#xA0;3573,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;images&quot;:&#xA0;[
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;https://example.com/annotation-1&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;oa:Annotation&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;motivation&quot;:&#xA0;&quot;sc:painting&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;on&quot;:&#xA0;&quot;https://example.com/my-canvas/1&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;resource&quot;:&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;https://example.com/res/1&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;dctypes:Image&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;format&quot;:&#xA0;&quot;image/jpeg&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;height&quot;:&#xA0;5000,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;width&quot;:&#xA0;3573,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;service&quot;:&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/image/2/context.json&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://image-server.com/image1.tiff&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;profile&quot;:&#xA0;&quot;http://iiif.io/api/image/2/level1.json&quot;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;]
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;]
+&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;]
+}
+</span></pre></div></div></code></pre>
 <p>There really is no substitute for reading the documentations and learning to read them is empowering.</p>
-<p>So in teams of 2, let&apos;s hunt for the following questions.</p>
-<p>When you think you&apos;ve found the answer, added it to your version of the manifest.
-Then we&apos;re done will go through together the completed manifests and compare answers</p>
+<p>Therefore, in this activity, we want you with a partner to look <a href="http://iiif.io/api/presentation/2.1/" target="_blank">IIIF documentation</a> and hunt for an answers to the following questions.</p>
+<p>When you think you&apos;ve found the answer, add it to your version of the manifest.</p>
+<p>Then we&apos;re done we will go through the completed manifests together and compare answers.</p>
 <ol>
-<li>Give the manifest resource the following title &quot;A custom manifest for IIIF Practice&quot;</li>
-<li>Provide a short description of this manifest</li>
-<li>Indicate that manifest resource has a creative commons 4.0 by-nc-sa license</li>
-<li>Tell the image viewer that this resource should be explicitly viewed going from left to right</li>
-<li>Create a second canvas, with appropriate ids</li>
-<li>Indicate that the image for this second canvas has two facing pages and therefore when a viewer shows in book view, it should not combine this with an image before or after</li>
-<li>Give canvas 1 a title &quot;canvas number 1&quot;</li>
-<li>Give canvas 2 a title &quot;canvas number 2&quot;</li>
-<li>Add a second image to canvas 1 with a different image format &quot;image/png&quot;</li>
-<li>Given this second image a title called &quot;alternative image for canvas 1&quot;</li>
+<li>Give the manifest resource the following title &quot;A custom manifest for IIIF Practice&quot;.</li>
+<li>Provide a short description of this manifest.</li>
+<li>Indicate that manifest resource has a creative commons 4.0 by-nc-sa license.</li>
+<li>Tell the image viewer that this resource should be explicitly viewed going from left to right.</li>
+<li>Create a second canvas, with appropriate ids.</li>
+<li>Indicate that the image for this second canvas has two facing pages and therefore when a viewer shows it in book view, it should not combine this with an image before or after.</li>
+<li>Give canvas 1 a title &quot;canvas number 1&quot;.</li>
+<li>Give canvas 2 a title &quot;canvas number 2&quot;.</li>
+<li>Add a second image to canvas 1 with a different image format &quot;image/png&quot;.</li>
+<li>Give this second image a title called &quot;alternative image for canvas 1&quot;.</li>
 </ol>
 <h3 id="manually-build-a-personal-manifest-method-1">Manually Build a Personal Manifest (Method 1)</h3>
 <ul>
-<li>Manually make a manifest with images from the local image server set up the night before.<ul>
+<li>Now that we have a template manifest, manually make your own manifest with images from the local image server set up the yesterday.<ul>
 <li>Hint, a important change will be changing the &quot;@id&quot; of the service object associated with the image resource.
-The value of the &quot;@id&quot; should be the path of the image on your image service, without any specific IIIF URI parameters.</li>
+The value of the &quot;@id&quot; should be the path of the image on your image service, without any specific IIIF URL parameters.</li>
 </ul>
 </li>
 <li>Use the manifest we just worked on together as a template.</li>
@@ -625,7 +666,7 @@ The value of the &quot;@id&quot; should be the path of the image on your image s
 <li><p>We should now have an image in our view!</p>
 </li>
 <li><p>Finally, let&apos;s download the manifest, by clicking &quot;Save Manifest&quot; at the top of the page, and &quot;Save&quot;</p>
-<p>Great job! You now have created and downloaded a IIIF Presentation API manifest. But wait, theres more!</p>
+<p>Great job! You now have created and downloaded a IIIF Presentation API manifest.</p>
 </li>
 </ol>
 <h2 id="serve-your-manifest">Serve your manifest</h2>
@@ -647,7 +688,7 @@ The value of the &quot;@id&quot; should be the path of the image on your image s
 <li><p>After the gist is created, click the &quot;Raw&quot; button to get the raw file url.</p>
 </li>
 </ol>
-<h2 id="view-your-manifest">View your manifest</h2>
+<h2 id="viewing-your-manifest-with-iiif-image-viewer">Viewing your manifest with IIIF Image Viewer</h2>
 <p>NOTE: If your viewing images from your local image server, you&apos;ll need be running a local instance of mirador or universal viewer</p>
 <h3 id="viewing-in-a-local-mirador-instance">Viewing in a local Mirador Instance</h3>
 <ol>
@@ -679,7 +720,7 @@ The value of the &quot;@id&quot; should be the path of the image on your image s
 </ol>
 <p>You should see one of your images now in the view next to a van Gogh</p>
 <p><img src="../images/eddie_mirador.png" alt="eddie in Mirador"></p>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-01 13:09:55</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-03 20:21:25</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
                                 
                                 </section>
                             
@@ -722,7 +763,7 @@ The value of the &quot;@id&quot; should be the path of the image on your image s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"next":{"title":"Introduction","level":"4.1","depth":1,"path":"day-three/README.md","ref":"day-three/README.md","articles":[]},"previous":{"title":"Building a simple image viewer","level":"3.2","depth":1,"path":"day-two/building-an-image-viewer-day-2-am.md","ref":"day-two/building-an-image-viewer-day-2-am.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/presentation-api-building-a-manifest.md","mtime":"2018-06-04T02:40:09.746Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"next":{"title":"Introduction","level":"4.1","depth":1,"path":"day-three/README.md","ref":"day-three/README.md","articles":[]},"previous":{"title":"Building a simple image viewer","level":"3.2","depth":1,"path":"day-two/building-an-image-viewer-day-2-am.md","ref":"day-two/building-an-image-viewer-day-2-am.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/presentation-api-building-a-manifest.md","mtime":"2018-06-04T13:19:36.455Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T13:20:14.833Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -373,14 +373,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../day-three/ranges.html">
+        <li class="chapter " data-level="4.2" data-path="../day-three/annotations-and-annotation-lists.html">
             
-                <a href="../day-three/ranges.html">
+                <a href="../day-three/annotations-and-annotation-lists.html">
             
                     
                         <b>4.2.</b>
                     
-                    Ranges
+                    Annotations, AnnotationLists
             
                 </a>
             
@@ -403,14 +403,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="../day-three/annotations-and-annotation-lists.html">
+        <li class="chapter " data-level="4.4" data-path="../day-three/ranges.html">
             
-                <a href="../day-three/annotations-and-annotation-lists.html">
+                <a href="../day-three/ranges.html">
             
                     
                         <b>4.4.</b>
                     
-                    Annotations, AnnotationLists
+                    Ranges
             
                 </a>
             
@@ -523,9 +523,30 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="iiif-presentation-api">IIIF Presentation API</h1>
-<p>[this should be quick cursory overview,
-day 2 is deep dive]</p>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-01 12:56:25</div><div class="created">Created by blalbrit 2018-04-18 16:59:25</div></div>
+<p>The IIIF Image API provides a machine-readable mechanism to retrieve pixels. But when we want to know more about the context of the image, such as its rights, title, description, and related information, and when we are working with structured sets of several images, we need the presentation API.</p>
+<blockquote>
+<p>The Image API retrieves pixels.<br>The Presentation API presents the image(s) in context.  </p>
+</blockquote>
+<p><img src="../images/api_puzzle_pieces.png" alt="IIIF API Separation"></p>
+<blockquote>
+<p>The Presentation API presents &quot;just enough metadata to drive a remote viewing experience&quot;. </p>
+</blockquote>
+<p><img src="../images/image_api_slide.png" alt="IIIF Image API Definition">
+<img src="../images/presentation_api_slide.png" alt="IIIF Presentation API Definition">
+<img src="../images/software_stack_slide.png" alt="IIIF Software Stack"></p>
+<p>Several &quot;Presentation API Clients&quot; have been written over the last few years at this top layer.
+<a href="http://projectmirador.org/demo/" target="_blank">Mirador</a>
+<a href="https://universalviewer.io/examples/#?c=&amp;m=&amp;s=&amp;cv=&amp;manifest=http%3A%2F%2Fwellcomelibrary.org%2Fiiif%2Fb18035723%2Fmanifest&amp;xywh=-1383%2C-197%2C5333%2C3936" target="_blank">Universal Viewer</a>
+<a href="http://codh.rois.ac.jp/software/iiif-curation-viewer/demo/?manifest=http://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json" target="_blank">IIIF Curation Viewer</a></p>
+<p><img src="../images/image_and_presentation_highlighted.png" alt="IIIF Presentation vs. Image API Interface"></p>
+<h2 id="enhanced-interoperability">Enhanced Interoperability</h2>
+<h3 id="drag-and-drop">Drag and Drop</h3>
+<h3 id="annotations">Annotations</h3>
+<h2 id="advanced-representation-features">Advanced Representation Features</h2>
+<h3 id="reunification-of-broken-books">Reunification of Broken Books</h3>
+<h3 id="reunification-of-fragmented-pages">Reunification of Fragmented Pages</h3>
+<h3 id="multispectral-image-layers">Multispectral Image Layers</h3>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Andrew Winget (Standard) 2018-06-03 20:36:42</div><div class="created">Created by blalbrit 2018-04-18 16:59:25</div></div>
                                 
                                 </section>
                             
@@ -568,7 +589,7 @@ day 2 is deep dive]</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Presentation API","level":"2.4","depth":1,"next":{"title":"Getting started with the Image API","level":"2.5","depth":1,"path":"day-one/getting-started-with-the-image-api.md","ref":"day-one/getting-started-with-the-image-api.md","articles":[{"title":"IIIF Hosting software as a service","level":"2.5.1","depth":2,"path":"day-one/iiif-hosting-saas.md","ref":"day-one/iiif-hosting-saas.md","articles":[]},{"title":"Setting up Cantaloupe as an image server","level":"2.5.2","depth":2,"path":"day-one/setting-up-cantaloupe.md","ref":"day-one/setting-up-cantaloupe.md","articles":[]},{"title":"Configuring Canataloupe","level":"2.5.3","depth":2,"path":"day-one/configuring-cantaloupe.md","ref":"day-one/configuring-cantaloupe.md","articles":[]},{"title":"Creating a basic image viewer","level":"2.5.4","depth":2,"path":"day-one/creating-a-basic-image-viewer.md","ref":"day-one/creating-a-basic-image-viewer.md","articles":[]}]},"previous":{"title":"Image API Internals","level":"2.3.2","depth":2,"path":"day-one/image-api-internals.md","ref":"day-one/image-api-internals.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-one/presentation-api.md","mtime":"2018-06-04T02:40:09.743Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentation API","level":"2.4","depth":1,"next":{"title":"Getting started with the Image API","level":"2.5","depth":1,"path":"day-one/getting-started-with-the-image-api.md","ref":"day-one/getting-started-with-the-image-api.md","articles":[{"title":"IIIF Hosting software as a service","level":"2.5.1","depth":2,"path":"day-one/iiif-hosting-saas.md","ref":"day-one/iiif-hosting-saas.md","articles":[]},{"title":"Setting up Cantaloupe as an image server","level":"2.5.2","depth":2,"path":"day-one/setting-up-cantaloupe.md","ref":"day-one/setting-up-cantaloupe.md","articles":[]},{"title":"Configuring Canataloupe","level":"2.5.3","depth":2,"path":"day-one/configuring-cantaloupe.md","ref":"day-one/configuring-cantaloupe.md","articles":[]},{"title":"Creating a basic image viewer","level":"2.5.4","depth":2,"path":"day-one/creating-a-basic-image-viewer.md","ref":"day-one/creating-a-basic-image-viewer.md","articles":[]}]},"previous":{"title":"Image API Internals","level":"2.3.2","depth":2,"path":"day-one/image-api-internals.md","ref":"day-one/image-api-internals.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-one/presentation-api.md","mtime":"2018-06-04T13:19:36.454Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T13:20:14.833Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
