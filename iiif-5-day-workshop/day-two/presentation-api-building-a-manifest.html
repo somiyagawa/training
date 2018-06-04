@@ -264,6 +264,36 @@
             
         </li>
     
+        <li class="chapter " data-level="2.5.3" data-path="../day-one/configuring-cantaloupe.html">
+            
+                <a href="../day-one/configuring-cantaloupe.html">
+            
+                    
+                        <b>2.5.3.</b>
+                    
+                    Configuring Canataloupe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../day-one/creating-a-basic-image-viewer.html">
+            
+                <a href="../day-one/creating-a-basic-image-viewer.html">
+            
+                    
+                        <b>2.5.4.</b>
+                    
+                    Creating a basic image viewer
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -492,24 +522,164 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="presentation-api-deep-dive">Presentation API Deep Dive</h1>
-<h2 id="looking-closer-at-a-manifest">Looking Closer at a manifest</h2>
-<h2 id="activity-hands-on-practice">Activity: Hands on Practice</h2>
-<h2 id="bodliean-manifest-editor-rachel-ben">Bodliean Manifest Editor (Rachel, Ben)</h2>
+                                <h1 id="presentation-api-deep-dive-day-ii-afternoon-session">Presentation API Deep Dive (Day II Afternoon Session)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Hopefully, through the process of slowly building your own image viewer, two things have become clear; Two things that help explain why something like the IIIF Presentation API exists.</p>
+<p>1) Image viewers need more than just images.
+They need specific kinds of metadata to orchestrates a user&apos;s complex interaction with a set of images. Data like the order of the images, the ways individual images should be used, metadata about the object represented by a set of images, metadata about individual images.</p>
+<p>2) Image viewers are hard to build. They take time and they take money. If everyone had to build a new image viewer for their unique set of images, the world would be full of thousands of different mediocre viewers that are difficult and expensive to maintain.</p>
+<p>The IIIF community recognized precisely this problem, and proposed standardizing the data that any image view would need. Because viewer applications and their data can b separated, image viewers can be re-used for a data set that is structured according to a standard (or set of rule) that the image viewer understands. The IIIF Presentation API is precisely this standard, and a IIIF compliant viewer is an image viewer that understands and knows how to display data that is structure according to these rules.</p>
+<p>Today, we&apos;re going to look at the &quot;guts&quot; of this standard and learn how to structure our data according to the rules of the IIIF Presentation API.</p>
+<p>First, let&apos;s look at the conceptual model of the IIIF Presentation API and then will begin building a manifest together.</p>
+<h2 id="looking-closer-at-a-manifest">Looking Closer at a Manifest</h2>
+<h3 id="basic-types">Basic Types</h3>
+<p><a href="http://iiif.io/api/presentation/2.1/#basic-types" target="_blank">http://iiif.io/api/presentation/2.1/#basic-types</a></p>
+<p><img src="http://iiif.io/api/presentation/2.1/img/objects.png" alt="manifest basic types"></p>
+<h4 id="the-manifest">The manifest</h4>
+<p>The most fundamental resource type is the Manifest. In the IIIF world you will often here people talking about &quot;manifests&quot;.</p>
+<p>But there is nothing to magical about manifest.</p>
+<p>A manifest is a resource that contains or wraps most of the resources and data and viewer will need.</p>
+<p>The IIIF Spec Definition reads as follows:</p>
+<blockquote>
+<p>Manifest
+The overall description of the structure and properties of the digital representation of an object. It carries information needed for the viewer to present the digitized content to the user, such as a title and other descriptive information about the object or the intellectual work that it conveys. Each manifest describes how to present a single object such as a book, a photograph, or a statue. <a href="http://iiif.io/api/presentation/2.1/#overview-manifest" target="_blank">http://iiif.io/api/presentation/2.1/#overview-manifest</a></p>
+</blockquote>
+<p>A manifest is most typically encountered as a file that lives on the internet somewhere.
+That file can be given to any IIIF Compliant Viewer. This viewer because it know what to do with data structure according to the IIIF rules can do stuff with that information, specifically it can provide a viewing experience.</p>
+<p>So what kind of resources does a manifest contain? Well lots, but focus on the main one&apos;s we need to get started.</p>
+<h4 id="sequences">Sequences</h4>
+<p>A manifest contains a sequences property which contains an array of sequences that order individual image resources.</p>
+<p>The Spec States:</p>
+<blockquote>
+<p>The order of the views of the object. Multiple sequences are allowed to cover situations when there are multiple equally valid orders through the content, such as when a manuscript&#x2019;s pages are rebound or archival collections are reordered. <a href="http://iiif.io/api/presentation/2.1/#overview-sequence" target="_blank">http://iiif.io/api/presentation/2.1/#overview-sequence</a></p>
+</blockquote>
+<p>In most manifests, you will find only one object within the sequences array.</p>
+<p>NOTE: Sequences is removed in the 3.0 spec and is replaced by a property called &quot;Items&quot;</p>
+<p>For the moment, what is important is that an individual sequence (or in 3.0 the items property) takes a list of &quot;Canvases&quot;</p>
+<h4 id="canvas">Canvas</h4>
+<p>The Spec defines a canvas as follows:</p>
+<p>Canvas</p>
+<blockquote>
+<p>A virtual container that represents a page or view and has content resources associated with it or with parts of it. The canvas provides a frame of reference for the layout of the content. The concept of a canvas is borrowed from standards like PDF and HTML, or applications like Photoshop and Powerpoint, where the display starts from a blank canvas and images, text and other resources are &#x201C;painted&#x201D; on to it. <a href="http://iiif.io/api/presentation/2.1/#overview-canvas" target="_blank">http://iiif.io/api/presentation/2.1/#overview-canvas</a></p>
+</blockquote>
+<p>Why not just call this the image?</p>
+<p>The canvas is an important abstraction. In most advanced viewers, it is not enough just to see the image, we want do things with that image. We want make notes, translations, links, references that connect to various areas of an image.</p>
+<p>But think for a minute. To what do these various kinds of annotations apply? When make a note about figure in an image, am I making a annotation about of set of bits unique to a jpeg image with a fixed some dimensions, or to black and white png image with a different set of dimensions. Generally no, I making an annotation about part of an &quot;image idea&quot; that can be digitally encoded and represented in a lots of different ways. If I want my annotation to show up when I&apos;m viewing a .tiff, .jpg, .png, all with wildly different dimensions I need a higher level of abstraction. This abstraction is the Canvas.</p>
+<p>Annotations can be associated with a canvas, and then different image resources can be interchangeably associated to that same canvas. In each case, the annotation coordinates and content remain applicable to each image.</p>
+<h4 id="the-content-resources">The Content Resources</h4>
+<p>The last step requires is this association of an image resource with a canvas.</p>
+<blockquote>
+<p>Content resources such as images or texts that are associated with a canvas. <a href="http://iiif.io/api/presentation/2.1/#overview-content" target="_blank">http://iiif.io/api/presentation/2.1/#overview-content</a></p>
+</blockquote>
+<p>This is done through privileged annotation.</p>
+<h2 id="activity-building-a-manifest">Activity: Building a Manifest</h2>
+<p>So usually all of this goes in one ear and out the other until we start building a manifest.</p>
+<p>While in production, manifests can get very big and are usually machine generated there is not substitute for making one by hand.</p>
+<p>First, we&apos;re going to do this together.</p>
+<p>Then, we&apos;ll send you off to make your own</p>
+<h3 id="group-manifest">Group Manifest</h3>
 <ul>
-<li>Export and then edit it with personal images.</li>
+<li>Here [add link] I&apos;ve created a bare minimum manifest for us all to share. But you&apos;ll notice, it is very sparse.</li>
 </ul>
-<h2 id="building-a-custom-manifest">Building a custom manifest</h2>
+<p>In this activity, we will pose a serious of questions and ask you to look at the IIIF documentation and hunt for an answer.</p>
+<p>There really is no substitute for reading the documentations and learning to read them is empowering.</p>
+<p>So in teams of 2, let&apos;s hunt for the following questions.</p>
+<p>When you think you&apos;ve found the answer, added it to your version of the manifest.
+Then we&apos;re done will go through together the completed manifests and compare answers</p>
+<ol>
+<li>Give the manifest resource the following title &quot;A custom manifest for IIIF Practice&quot;</li>
+<li>Provide a short description of this manifest</li>
+<li>Indicate that manifest resource has a creative commons 4.0 by-nc-sa license</li>
+<li>Tell the image viewer that this resource should be explicitly viewed going from left to right</li>
+<li>Create a second canvas, with appropriate ids</li>
+<li>Indicate that the image for this second canvas has two facing pages and therefore when a viewer shows in book view, it should not combine this with an image before or after</li>
+<li>Give canvas 1 a title &quot;canvas number 1&quot;</li>
+<li>Give canvas 2 a title &quot;canvas number 2&quot;</li>
+<li>Add a second image to canvas 1 with a different image format &quot;image/png&quot;</li>
+<li>Given this second image a title called &quot;alternative image for canvas 1&quot;</li>
+</ol>
+<h3 id="manually-build-a-personal-manifest-method-1">Manually Build a Personal Manifest (Method 1)</h3>
 <ul>
-<li>Manually make a manifest with images from the local image server set up the night before</li>
-<li>Serving manifest, locally or with jsonblob</li>
-<li>Perhaps also with local server
-<a href="https://jsonblob.com/api/a8fa9e7f-0084-11e8-9fae-ddd509bab798" target="_blank">https://jsonblob.com/api/a8fa9e7f-0084-11e8-9fae-ddd509bab798</a></li>
-<li>(??) Use the manifest to generate a list/gallery of yours or your neighbor&#x2019;s content (?)</li>
-<li>Viewing manifest in remote Mirador or Universal Viewer.
-Test</li>
+<li>Manually make a manifest with images from the local image server set up the night before.<ul>
+<li>Hint, a important change will be changing the &quot;@id&quot; of the service object associated with the image resource.
+The value of the &quot;@id&quot; should be the path of the image on your image service, without any specific IIIF URI parameters.</li>
 </ul>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-04-24 14:20:20</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 13:51:45</div></div>
+</li>
+<li>Use the manifest we just worked on together as a template.</li>
+</ul>
+<h3 id="building-a-manifest-with-a-gui-method-2">Building a Manifest With a GUI (Method 2)</h3>
+<p>To start navigate to:</p>
+<p><a href="http://iiif.bodleian.ox.ac.uk/manifest-editor/" target="_blank">http://iiif.bodleian.ox.ac.uk/manifest-editor/</a></p>
+<p>This is a demo/hosted version of the <a href="https://github.com/bodleian/iiif-manifest-editor" target="_blank">iiif-manifest-editor</a>.</p>
+<ol>
+<li>Click &quot;New Manifest&quot;</li>
+<li><p>Click &quot;Add Canvas&quot; and then click on the &quot;Empty Canvas&quot;</p>
+<p><img src="../images/add_canvas.png" alt="add canvas"></p>
+</li>
+<li><p>Now we need to add an image to this canvas. Click &quot;Add Image to Canvas&quot;</p>
+</li>
+<li><p>And we want to use an image we already hosting, so we select the &quot;From info.json URI&quot; option, and input our info.json URI from our local IIIF server. Then click &quot;Submit URI&quot;</p>
+<p><code>http://127.0.0.1:8182/iiif/2/eddie.jpg/info.json</code></p>
+<p><img src="../images/info_json_uri.png" alt="info json uri"></p>
+</li>
+<li><p>We should now have an image in our view!</p>
+</li>
+<li><p>Finally, let&apos;s download the manifest, by clicking &quot;Save Manifest&quot; at the top of the page, and &quot;Save&quot;</p>
+<p>Great job! You now have created and downloaded a IIIF Presentation API manifest. But wait, theres more!</p>
+</li>
+</ol>
+<h2 id="serve-your-manifest">Serve your manifest</h2>
+<h3 id="method-1-serve-your-manifest-locally">Method 1: Serve your Manifest Locally</h3>
+<ul>
+<li>Serving manifest locally<ul>
+<li>Install http-server, <code>npm http-server</code>, or live-server, <code>npm live-server</code></li>
+<li>Then in the directory with the manifest, run <code>http-server --cors</code> or <code>live-server --cors</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="method-2-serve-your-manifest-with-github-gist">Method 2: Serve Your Manifest with github gist</h3>
+<ol>
+<li><p>Navigate to <a href="https://gist.github.com" target="_blank">https://gist.github.com</a></p>
+</li>
+<li><p>Drag and drop your <code>manifest.json</code> file into the window and click &quot;Create Secret Gist&quot; (or public if you like, it doesn&apos;t matter).</p>
+<p><img src="../images/gist.png" alt="gist"></p>
+</li>
+<li><p>After the gist is created, click the &quot;Raw&quot; button to get the raw file url.</p>
+</li>
+</ol>
+<h2 id="view-your-manifest">View your manifest</h2>
+<p>NOTE: If your viewing images from your local image server, you&apos;ll need be running a local instance of mirador or universal viewer</p>
+<h3 id="viewing-in-a-local-mirador-instance">Viewing in a local Mirador Instance</h3>
+<ol>
+<li>Download the most recent release from here: <a href="https://github.com/ProjectMirador/mirador/releases" target="_blank">https://github.com/ProjectMirador/mirador/releases</a></li>
+<li>Unzip the package</li>
+<li>In Chrome open the file in the downloaded package called example.html<ul>
+<li>File-&gt;Open File-&gt;example.html</li>
+</ul>
+</li>
+<li>Now drop in your custom manifest</li>
+</ol>
+<h3 id="viewing-online-in-universalviewer">Viewing Online in UniversalViewer</h3>
+<ol>
+<li><p>Copy that URL, navigate to <a href="http://universalviewer.io/uv.html?manifest=" target="_blank">http://universalviewer.io/uv.html?manifest=</a> and past the hosted manifest url after the <code>=</code> in the url.</p>
+<p>Hopefully you see your images in the <a href="http://universalviewer.io/" target="_blank">UniversalViewer</a>.</p>
+</li>
+</ol>
+<h3 id="viewing-online-in-mirador">Viewing Online in Mirador</h3>
+<p>Let&apos;s also view this in <a href="projectmirador.org">Mirador</a></p>
+<ol>
+<li>Navigate to <a href="http://projectmirador.org/demo/" target="_blank">http://projectmirador.org/demo/</a>.</li>
+<li>Click the <code>x</code> box in both windows to close the windows.</li>
+<li><p>Hover over the icon to the right of the <code>x</code> and click &quot;Replace Object&quot;</p>
+<p><img src="../images/mirador_replace.png" alt="mirador replace object"></p>
+</li>
+<li><p>Paste in your manifest url to the text box &quot;Add new object from URL:&quot;</p>
+</li>
+<li>Click &quot;Load&quot; - You should see your manifest loaded there. Click on one of your images.</li>
+</ol>
+<p>You should see one of your images now in the view next to a van Gogh</p>
+<p><img src="../images/eddie_mirador.png" alt="eddie in Mirador"></p>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-01 13:09:55</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
                                 
                                 </section>
                             
@@ -552,7 +722,7 @@ Test</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"next":{"title":"Introduction","level":"4.1","depth":1,"path":"day-three/README.md","ref":"day-three/README.md","articles":[]},"previous":{"title":"Building a simple image viewer","level":"3.2","depth":1,"path":"day-two/building-an-image-viewer-day-2-am.md","ref":"day-two/building-an-image-viewer-day-2-am.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/presentation-api-building-a-manifest.md","mtime":"2018-05-29T13:14:46.088Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-29T13:15:50.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"next":{"title":"Introduction","level":"4.1","depth":1,"path":"day-three/README.md","ref":"day-three/README.md","articles":[]},"previous":{"title":"Building a simple image viewer","level":"3.2","depth":1,"path":"day-two/building-an-image-viewer-day-2-am.md","ref":"day-two/building-an-image-viewer-day-2-am.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/presentation-api-building-a-manifest.md","mtime":"2018-06-04T02:40:09.746Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

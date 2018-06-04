@@ -264,6 +264,36 @@
             
         </li>
     
+        <li class="chapter " data-level="2.5.3" data-path="../day-one/configuring-cantaloupe.html">
+            
+                <a href="../day-one/configuring-cantaloupe.html">
+            
+                    
+                        <b>2.5.3.</b>
+                    
+                    Configuring Canataloupe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../day-one/creating-a-basic-image-viewer.html">
+            
+                <a href="../day-one/creating-a-basic-image-viewer.html">
+            
+                    
+                        <b>2.5.4.</b>
+                    
+                    Creating a basic image viewer
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -496,13 +526,14 @@
 <h2 id="goals">Goals</h2>
 <p>Our goal this morning is twofold.</p>
 <ul>
-<li><p>First we want to begin building a web environment where we begin to the IIIF API in real world web pages.</p>
+<li><p>First we want to begin building a web environment where we can begin to the use IIIF image API in real world web pages.</p>
 </li>
-<li><p>Second, in the process of building such a page, we want to begin to see organically the need for or the desirability of the IIIF presentation API.</p>
+<li><p>Second, in the process of building such a page, we want to begin to see <em>organically</em> the need for the IIIF presentation API.</p>
 </li>
 </ul>
 <h2 id="activity-description">Activity Description</h2>
-<p>To achieve this, our goal this morning is to begin building our own rudimentary image viewer or image focused webpage, that provides a public viewing space for the images that you made IIIF compliant yesterday.</p>
+<p>To achieve this, our goal this morning is to begin building our own rudimentary image viewer or image focused webpages: pages provide a public viewing space for the images that you made IIIF compliant yesterday.</p>
+<p>This will be the beginning of building a personal project that we will return to all week. By the end of the week, our goal is to connect (via links) all of our personal projects, producing a collective projects that represents the achievement of our week together.</p>
 <h2 id="instructions">Instructions</h2>
 <ul>
 <li>Create a new directory called &quot;MyIIIFViewer&quot;</li>
@@ -526,7 +557,11 @@
 <span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">html</span><span class="sunlight-operator">&gt;</span>
 </span></pre></div></div></code></pre>
 <ul>
-<li>View this index.html file in your browswer</li>
+<li>View this index.html file in your browser<ul>
+<li>Open browser</li>
+<li>File-&gt;select the index.html file</li>
+</ul>
+</li>
 <li><p>Alternatively, if you have node installed, install &quot;live-server&quot;</p>
 <ul>
 <li>$ npm install -g live-server</li>
@@ -540,12 +575,15 @@
 </ul>
 </li>
 <li>Add some Images<ul>
-<li><code>&lt;img src=&quot;iiif-compliant-url-to-image&quot;</code></li>
+<li><code>&lt;img src=&quot;iiif-compliant-url-to-image&quot;&gt;</code></li>
 </ul>
 </li>
 <li>Add some rotated images, add some cropped images</li>
 <li>Create a new page, &quot;page2.html&quot; and repeat above steps to add a new image</li>
-<li>Add links connecting pages.</li>
+<li>Add links connecting pages.<ul>
+<li><code>&lt;a href=&quot;filename.html&quot;&gt;Name of link to new page&lt;/a&gt;</code></li>
+</ul>
+</li>
 <li>Add some javascript to change images based on query parameters<ul>
 <li>See example below</li>
 </ul>
@@ -565,16 +603,18 @@
 &#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>My&#xA0;Image&#xA0;Viewer<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>
 &#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">div</span>&#xA0;<span class="sunlight-attribute">style</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;display:&#xA0;flex;&#xA0;justify-content:&#xA0;space-between;&quot;</span><span class="sunlight-operator">&gt;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">&lt;!--&#xA0;change&#xA0;the&#xA0;value&#xA0;of&#xA0;these&#xA0;image&#xA0;links&#xA0;to&#xA0;the&#xA0;url&#xA0;of&#xA0;an&#xA0;image&#xA0;from&#xA0;your&#xA0;server&#xA0;--&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>
 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;?imageUrl=http://images.hellokids.com/_uploads/_tiny_galerie/20130414/the-moomin-coloring-pages-3_7ua_source.jpg&amp;title=Moomin%20and%20Snork%20Maiden&amp;createdBy=Jeff&quot;</span><span class="sunlight-operator">&gt;</span>Moomin&#xA0;Troll&#xA0;and&#xA0;Snork&#xA0;Maiden<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;?imageUrl=https://cdn.shopify.com/s/files/1/0713/7997/products/t-shirts-little-my-t-shirt-moomin-characters-2_768x.png&amp;title=Little%20My&amp;createdBy=Bob&quot;</span><span class="sunlight-operator">&gt;</span>Little&#xA0;My<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">&lt;!--&#xA0;change&#xA0;the&#xA0;value&#xA0;of&#xA0;these&#xA0;image&#xA0;links&#xA0;to&#xA0;the&#xA0;url&#xA0;of&#xA0;an&#xA0;image&#xA0;from&#xA0;your&#xA0;server&#xA0;--&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;?imageUrl=https://cdn.shopify.com/s/files/1/0713/7997/products/t-shirts-little-my-t-shirt-moomin-characters-2_768x.png&amp;title=Little%20My&amp;createdBy=Bob&quot;</span><span class="sunlight-operator">&gt;</span>Little&#xA0;My<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
-
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">img</span>&#xA0;<span class="sunlight-attribute">id</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;myImage&quot;</span><span class="sunlight-operator">/&gt;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">ul</span>&#xA0;<span class="sunlight-attribute">id</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;metadata&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
 &#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">div</span><span class="sunlight-operator">&gt;</span>
-
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
 
 &#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">script</span><span class="sunlight-operator">&gt;</span></span><span class="sunlight-javascript">
 &#xA0;&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-named-ident">getUrlVar</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
@@ -603,7 +643,6 @@
 
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span></span><span class="sunlight-xml">
 
-
 &#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">script</span><span class="sunlight-operator">&gt;</span>
 
 <span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
@@ -612,12 +651,50 @@
 <h2 id="discussion-questions">Discussion Questions</h2>
 <ul>
 <li>What kinds of information did you find yourself wanting to have available as you tried to build your viewer?</li>
-<li>What kind of interactions with your images did you want to have that we&apos;re difficult to achieve?</li>
+<li>What kind of interactions with your images did you want to have that were difficult to achieve?</li>
 <li>What kinds of metadata is required for your viewer that is not necessarily visualized? E.g. How do your images relate to each other? How is that information used in your viewer?</li>
 </ul>
 <h2 id="break">Break</h2>
 <h2 id="introduction-to-image-libraries">Introduction to Image Libraries.</h2>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-04-24 13:51:45</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:28:06</div></div>
+<h3 id="openseadragon">Openseadragon</h3>
+<h2 id="activity-description">Activity Description</h2>
+<p>In this activity we want to start combining IIIF we re-usable libraries that allow us to do more advanced things. In this activity we are going to add the library openseadragon.js to a basic webpage and provide it with information from a IIIF server that it can use to display images.</p>
+<h4 id="instructions">Instructions</h4>
+<ul>
+<li>Create a new html page (e.g. seadragon-demo.html)</li>
+<li>Add the Seadragon Library<ul>
+<li><code>&lt;script
+src=&quot;https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.3.1/openseadragon.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+</li>
+<li>Add jquery libary (so you can easily request other files, such as info.json file)<ul>
+<li><code>&lt;script
+src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
+integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
+crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+</li>
+<li>Add an empty div for the openseadragon to create a view port<ul>
+<li><code>&lt;div id=&quot;myImage&quot; style=&quot;width: 400px&quot;&gt;&lt;/div&gt;</code></li>
+</ul>
+</li>
+<li>Create a basic openseadragon object</li>
+</ul>
+<pre><code class="lang-javascript"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-javascript sunlight-highlighted"><span class="sunlight-javascript">&#xA0;&#xA0;<span class="sunlight-reservedWord">const</span>&#xA0;<span class="sunlight-ident">imageurl</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-comment">//path&#xA0;to&#xA0;info.json&#xA0;file</span>
+&#xA0;&#xA0;<span class="sunlight-ident">$</span><span class="sunlight-operator">.</span><span class="sunlight-ident">get</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">imageUrl</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-keyword">function</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;get&#xA0;tile&#xA0;from&#xA0;infojson&#xA0;and&#xA0;pass&#xA0;them&#xA0;to&#xA0;openseadragon</span>
+&#xA0;&#xA0;<span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">[</span><span class="sunlight-string">&quot;tiles&quot;</span><span class="sunlight-punctuation">]</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-punctuation">{</span><span class="sunlight-string">&quot;scaleFactors&quot;</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-number">1</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">2</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">4</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">8</span><span class="sunlight-punctuation">]</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-string">&quot;width&quot;</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-number">300</span><span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">]</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">var</span>&#xA0;<span class="sunlight-ident">viewer</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-ident">OpenSeadragon</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">id</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-string">&quot;myImage&quot;</span><span class="sunlight-punctuation">,</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">tileSources</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">]</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
+<h3 id="leaflet">Leaflet</h3>
+<h4 id="activity-description">Activity Description</h4>
+<p>In this activity, we&apos;re going to repeat the above task with a different library called leaflet-iiif.js</p>
+<h4 id="instructions">Instructions</h4>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-05-29 10:28:47</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 11:28:06</div></div>
                                 
                                 </section>
                             
@@ -660,7 +737,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building a simple image viewer","level":"3.2","depth":1,"next":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"path":"day-two/presentation-api-building-a-manifest.md","ref":"day-two/presentation-api-building-a-manifest.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"day-two/README.md","ref":"day-two/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/building-an-image-viewer-day-2-am.md","mtime":"2018-05-29T13:14:46.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-29T13:15:50.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Building a simple image viewer","level":"3.2","depth":1,"next":{"title":"Presentation API Deep Dive","level":"3.3","depth":1,"path":"day-two/presentation-api-building-a-manifest.md","ref":"day-two/presentation-api-building-a-manifest.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"day-two/README.md","ref":"day-two/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/building-an-image-viewer-day-2-am.md","mtime":"2018-06-04T02:40:09.746Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

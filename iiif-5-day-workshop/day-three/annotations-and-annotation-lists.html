@@ -264,6 +264,36 @@
             
         </li>
     
+        <li class="chapter " data-level="2.5.3" data-path="../day-one/configuring-cantaloupe.html">
+            
+                <a href="../day-one/configuring-cantaloupe.html">
+            
+                    
+                        <b>2.5.3.</b>
+                    
+                    Configuring Canataloupe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../day-one/creating-a-basic-image-viewer.html">
+            
+                <a href="../day-one/creating-a-basic-image-viewer.html">
+            
+                    
+                        <b>2.5.4.</b>
+                    
+                    Creating a basic image viewer
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -525,6 +555,9 @@
 }
 </span></pre></div></div></code></pre>
 <h2 id="what-are-annotationslists">What are annotationsLists?</h2>
+<p>Annotations are simply lists of annotations grouped together.
+They can be re-used by an application that wants to retrieve them.</p>
+<p>That can also be linked to manifests so that a viewer can bring them together in one cohesive experience.</p>
 <h2 id="embedding-an-annotationslists-in-a-manifest">Embedding an annotationsLists in a manifest</h2>
 <pre><code class="lang-json"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-json sunlight-highlighted"><span class="sunlight-plaintext">{
 &#xA0;&#xA0;//&#xA0;Metadata&#xA0;about&#xA0;this&#xA0;canvas
@@ -556,25 +589,84 @@
 
 }
 </span></pre></div></div></code></pre>
-<h2 id="using-an-annotation-store">Using an annotation Store</h2>
-<h2 id="turning-on-annotations-in-mirador">Turning on annotations in Mirador</h2>
 <h2 id="caveat-open-annotations-vs-web-annotations">Caveat: Open Annotations vs Web Annotations</h2>
-<h2 id="activity-hands-on-practice">ACTIVITY: Hands on Practice</h2>
+<h2 id="using-an-annotation-store">Using an annotation Store</h2>
+<p>What is an annotation store? An annotation store is just a database designed to ingest data structured according to the Open Annotations (or Web Annotations) specifications.</p>
+<p>There are lots of them. You can make your own or use one that has been made by someone else.</p>
+<h2 id="local-storage-as-an-annotation-store">Local Storage as an annotation store</h2>
+<p>Because an annotation store is nothing other than place to store raw data
+even your browser&apos;s local storage can function as an annotation store.</p>
+<h3 id="activity">Activity</h3>
+<p>Turning on annotations in Mirador</p>
 <ul>
-<li>Download Simple Annotation Store<ul>
-<li>TODO: Glen will look into java binary build. Other option is to use <a href="http://swib.gdmrdigital.com" target="_blank">http://swib.gdmrdigital.com</a> which is hosted SAS.</li>
+<li><p>Open the index.html page of a mirador instance.</p>
+</li>
+<li><p>Add the follow key value pair to the configuration of options of your mirador instance.</p>
+<ul>
+<li><code>&quot;annotationEndpoint&quot;: { &quot;name&quot;:&quot;Local Storage&quot;, &quot;module&quot;: &quot;LocalStorageEndpoint&quot; }</code></li>
 </ul>
 </li>
-<li>Annotation Practice<ul>
-<li>Download Mirador, Configure to point at Annotation Store</li>
-<li>Configure to show Annotation Side Panel</li>
-<li>Create annotations first</li>
-<li>Export them</li>
-<li>Adjust manifest to use export annotations Lists instead of annotation end-point</li>
+<li>A module then has to be build (the LocalStorageEndpoint) using distinct set of functions that mirador knows how to call <a href="https://github.com/ProjectMirador/mirador/blob/develop/js/src/annotations/localStorageEndpoint.js" target="_blank">See https://github.com/ProjectMirador/mirador/blob/develop/js/src/annotations/localStorageEndpoint.js</a>.<ul>
+<li>This module includes functions like search, deleteAnnotation, updateAnnotation, createAnnotation, getAnnotationList, etc.</li>
+<li>Each annotation server might have different ways of deleting, updating, creating an annotation thus mirador needs this extra module to know what kind of action to perform.</li>
 </ul>
 </li>
+<li>Now that the localstorage module is turned on, go into Mirador and makes some annotations.</li>
+<li>After you&apos;ve made some annotations, view them in local Storage<ul>
+<li>Open the developer tools in the Chrome Browser</li>
+<li>Go to &quot;Application&quot;</li>
+<li>View &quot;Local Storage&quot; in the left hand column.</li>
 </ul>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-04-24 13:51:45</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 13:51:45</div></div>
+</li>
+<li>Copying the information from you browsers local storage is the most primitive way of <em>Exporting</em> your annotations.</li>
+</ul>
+<h3 id="questions-and-reflections">Questions and Reflections</h3>
+<ul>
+<li>What are some of the limitations of using your local storage as a store?</li>
+<li>What kind of store/database will allow us to overcome those limitations?</li>
+</ul>
+<h2 id="setting-up-a-remote-local-storage">Setting up a Remote Local Storage</h2>
+<p>There are several kinds of annotations stores that can be used.</p>
+<h3 id="activity">Activity</h3>
+<ul>
+<li><p>Download the Rails Annotation Server</p>
+<ul>
+<li>Download from github (git clone ...)</li>
+</ul>
+</li>
+<li><p>Run your rails server</p>
+<ul>
+<li>either with <code>rails server</code></li>
+<li><code>docker compose up</code> or <code>docker run rails annotation server</code></li>
+</ul>
+</li>
+<li>Add the annotot module to mirador</li>
+<li>Rebuild mirador</li>
+<li>Update the mirador annotation endpoint configuration</li>
+<li>&quot;annotationEndpoint&quot;: {<pre><code>      &quot;name&quot;: &apos;Annotot&apos;,
+      &quot;module&quot;: &apos;AnnototEndpoint&apos;,
+      &quot;options&quot;: {
+        &quot;endpoint&quot;: &quot;http://localhost:3000/annotations&quot;
+      }
+    },
+</code></pre></li>
+<li>Now make some annotations in mirador</li>
+<li>Now view those same annotations apart from mirador at <a href="http://localhost:3000/annotations/lists?uri=" target="_blank">http://localhost:3000/annotations/lists?uri=</a><cavasid></cavasid></li>
+<li>Now you&apos;ve exported your annotations and free to use them anywhere else.</li>
+<li><p>So let&apos;s use them somewhere else</p>
+<ul>
+<li>Go to back to your custom project and use jquery to make a request for those annotations
+and display them on your page like so:</li>
+</ul>
+<pre><code class="lang-javascript"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-javascript sunlight-highlighted"><span class="sunlight-javascript">&#xA0;&#xA0;<span class="sunlight-reservedWord">const</span>&#xA0;<span class="sunlight-ident">annotationList</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&quot;http://localhost:3000/annotations/lists?uri=&lt;cavasid&gt;&quot;</span>
+&#xA0;&#xA0;<span class="sunlight-ident">$</span><span class="sunlight-operator">.</span><span class="sunlight-ident">get</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">annotationList</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-keyword">function</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">data</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;<span class="sunlight-ident">console</span><span class="sunlight-operator">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">data</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;<span class="sunlight-comment">//do&#xA0;something&#xA0;with&#xA0;that&#xA0;data</span>
+&#xA0;&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
+</li>
+</ul>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-05-29 12:43:19</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
                                 
                                 </section>
                             
@@ -617,7 +709,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Annotations, AnnotationLists","level":"4.4","depth":1,"next":{"title":"Search","level":"4.5","depth":1,"path":"day-three/search.md","ref":"day-three/search.md","articles":[]},"previous":{"title":"Collections","level":"4.3","depth":1,"path":"day-three/collections.md","ref":"day-three/collections.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/annotations-and-annotation-lists.md","mtime":"2018-05-29T13:14:46.085Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-29T13:15:50.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Annotations, AnnotationLists","level":"4.4","depth":1,"next":{"title":"Search","level":"4.5","depth":1,"path":"day-three/search.md","ref":"day-three/search.md","articles":[]},"previous":{"title":"Collections","level":"4.3","depth":1,"path":"day-three/collections.md","ref":"day-three/collections.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/annotations-and-annotation-lists.md","mtime":"2018-06-04T02:40:09.744Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

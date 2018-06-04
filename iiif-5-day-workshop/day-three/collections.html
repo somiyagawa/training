@@ -264,6 +264,36 @@
             
         </li>
     
+        <li class="chapter " data-level="2.5.3" data-path="../day-one/configuring-cantaloupe.html">
+            
+                <a href="../day-one/configuring-cantaloupe.html">
+            
+                    
+                        <b>2.5.3.</b>
+                    
+                    Configuring Canataloupe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../day-one/creating-a-basic-image-viewer.html">
+            
+                <a href="../day-one/creating-a-basic-image-viewer.html">
+            
+                    
+                        <b>2.5.4.</b>
+                    
+                    Creating a basic image viewer
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -495,17 +525,36 @@
                                 <h1 id="collections">Collections</h1>
 <h2 id="description">Description</h2>
 <h4 id="collection-tree-navigator-for-mirador">Collection Tree Navigator for Mirador</h4>
-<p>This feature came about to address the need of showing objects in nested collections to ease navigation and avoid server slow-down. Collection-level manifests are often very large and can contain many sub-collections within them. As such, it became important for users to navigate through collections easily and without losing context. </p>
-<p>See the code for Collection Tree <a href="https://github.com/utlib/mirador/tree/develop_collection_tree_lazy" target="_blank">here</a> </p>
+<p>This feature came about to address the need of showing objects in nested collections to ease navigation and avoid server slow-down. Collection-level manifests are often very large and can contain many sub-collections within them. As such, it became important for users to navigate through collections easily and without losing context.</p>
+<p>See the code for Collection Tree <a href="https://github.com/utlib/mirador/tree/develop_collection_tree_lazy" target="_blank">here</a></p>
 <p>Allows users to:</p>
 <ul>
 <li>View entire collections with sub-collections in a tree structure on manifest selection panel</li>
-<li>Easily navigate across collections </li>
+<li>Easily navigate across collections</li>
 </ul>
 <p>Demo</p>
-<p>You can view Mirador advanced features <a href="http://projectmirador.org/demo/advanced_features.html" target="_blank">here</a> </p>
-<h2 id="activity-hands-on-practice">ACTIVITY: Hands on Practice</h2>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Rachel Di Cresce 2018-05-17 12:53:29</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 13:51:45</div></div>
+<p>You can view Mirador advanced features <a href="http://projectmirador.org/demo/advanced_features.html" target="_blank">here</a></p>
+<h2 id="activity">Activity</h2>
+<p>Let&apos;s create your own collection</p>
+<ul>
+<li>Find at least five manifests and organize them into a collection, following the IIIF guidelines<ul>
+<li><a href="http://iiif.io/api/presentation/2.1/#collection" target="_blank">http://iiif.io/api/presentation/2.1/#collection</a></li>
+</ul>
+</li>
+<li>Then configure mirador to load a collections<ul>
+<li><code>&quot;data&quot;: [
+  { &quot;collectionUri&quot;: &quot;https://scta.info/iiif/scta/collection&quot;}
+]</code></li>
+</ul>
+</li>
+<li>Configure mirador to allow to browse your collection by changing the manifestsPanel module to the CollectionTreeManifestsPanel&quot;<ul>
+<li><code>&quot;manifestsPanel&quot;: {
+  &quot;module&quot;: &quot;&quot;CollectionTreeManifestsPanel&quot;,
+  }</code></li>
+</ul>
+</li>
+</ul>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-05-29 12:52:05</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
                                 
                                 </section>
                             
@@ -548,7 +597,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Collections","level":"4.3","depth":1,"next":{"title":"Annotations, AnnotationLists","level":"4.4","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[]},"previous":{"title":"Ranges","level":"4.2","depth":1,"path":"day-three/ranges.md","ref":"day-three/ranges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/collections.md","mtime":"2018-05-29T13:14:46.086Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-29T13:15:50.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Collections","level":"4.3","depth":1,"next":{"title":"Annotations, AnnotationLists","level":"4.4","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[]},"previous":{"title":"Ranges","level":"4.2","depth":1,"path":"day-three/ranges.md","ref":"day-three/ranges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/collections.md","mtime":"2018-06-04T02:40:09.744Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T02:42:18.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
