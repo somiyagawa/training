@@ -641,29 +641,29 @@
                                 
                                 <h1 id="building-a-gallery-viewer-from-scratch">Building a Gallery Viewer From Scratch</h1>
 <h2 id="instructions">Instructions</h2>
-<ul>
+<ol>
 <li>Create a new directory called &quot;MyIIIFGallery&quot;</li>
 <li>In this directory, create a new file called index.html</li>
-<li>Fill your html page with a basic html template</li>
-</ul>
-<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml"><span class="sunlight-doctype">&lt;!doctype&#xA0;html&gt;</span>
+<li><p>Fill your html page with a basic html template</p>
+<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml">&#xA0;<span class="sunlight-doctype">&lt;!doctype&#xA0;html&gt;</span>
 
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">html</span>&#xA0;<span class="sunlight-attribute">lang</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;en&quot;</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">charset</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;utf-8&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">html</span>&#xA0;<span class="sunlight-attribute">lang</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;en&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">charset</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;utf-8&quot;</span><span class="sunlight-operator">&gt;</span>
 
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>Add&#xA0;title&#xA0;here<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;description&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;description&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;author&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;author&#xA0;name&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>Add&#xA0;title&#xA0;here<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;description&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;description&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;author&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;author&#xA0;name&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
 
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>Hello&#xA0;World<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">html</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>Hello&#xA0;World<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">html</span><span class="sunlight-operator">&gt;</span>
 </span></pre></div></div></code></pre>
-<ol>
-<li>View this index.html file in your browser<ul>
+</li>
+<li><p>View this index.html file in your browser</p>
+<ul>
 <li>Open browser</li>
 <li>File-&gt;select the index.html file</li>
 </ul>
@@ -674,15 +674,13 @@
 <li>View your site at <a href="http://127.0.0.1:8080" target="_blank">http://127.0.0.1:8080</a></li>
 </ul>
 </li>
-<li><p>Alternatively, you can also install &quot;live-server&quot; which will refresh your browser every time you make a change</p>
-<ul>
+<li>Alternatively, you can also install &quot;live-server&quot; which will refresh your browser every time you make a change<ul>
 <li>$ <code>npm install -g live-server</code></li>
 <li>Inside your project directory (e.g. MyIIIFGallery) run <code>$ live-sever</code></li>
 <li>View your site at <a href="http://127.0.0.1:8080" target="_blank">http://127.0.0.1:8080</a></li>
 </ul>
 </li>
-<li><p>Now start creating your Gallery.</p>
-<ul>
+<li>Now start creating your Gallery.<ul>
 <li>Think about the things a gallery website needs.</li>
 <li>You&apos;ll need a landing page, with links, titles, and thumbnails of your images.</li>
 <li>You&apos;ll need individual pages that display each image</li>
@@ -690,7 +688,8 @@
 </ul>
 </li>
 <li>For basic guide to making an html page and available elements consult <a href="https://www.w3schools.com/Html/" target="_blank">https://www.w3schools.com/Html/</a></li>
-<li>At bare minimum do the following:<ul>
+<li><p>At bare minimum do the following:</p>
+<ul>
 <li>Give your webpage a title.<ul>
 <li>Inside the <code>&lt;body&gt;</code> tag add <code>&lt;h1&gt;My Image Viewer&lt;/h1&gt;</code></li>
 </ul>
@@ -698,44 +697,44 @@
 <li>Add a list of links to pages that will display individual images.</li>
 <li>Something like the following</li>
 </ul>
-</li>
-</ol>
-<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml">&#xA0;&#xA0;`<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;image1.html&quot;</span><span class="sunlight-operator">&gt;</span>Link&#xA0;to&#xA0;Image&#xA0;1<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;image2.html&quot;</span><span class="sunlight-operator">&gt;</span>Link&#xA0;to&#xA0;Image&#xA0;2<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">&lt;!--&#xA0;...&#xA0;add&#xA0;more&#xA0;--&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
+<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml">&#xA0;`<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;image1.html&quot;</span><span class="sunlight-operator">&gt;</span>Link&#xA0;to&#xA0;Image&#xA0;1<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">a</span>&#xA0;<span class="sunlight-attribute">href</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;image2.html&quot;</span><span class="sunlight-operator">&gt;</span>Link&#xA0;to&#xA0;Image&#xA0;2<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">a</span><span class="sunlight-operator">&gt;</span><span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">li</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">&lt;!--&#xA0;...&#xA0;add&#xA0;more&#xA0;--&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">ul</span><span class="sunlight-operator">&gt;</span>
 </span></pre></div></div></code></pre>
 <ul>
 <li>Question: How could enhance your list with &quot;thumbnails&quot; using the IIIF Image api.</li>
 <li>A thumbnail is just and image and images can be added to an html page like so:<ul>
 <li><code>&lt;img src=&quot;[add path/link to the image here]&quot;/&gt;</code></li>
-<li>Now that you have a basic landing page, create the individual pages where the images will be displayed.</li>
 </ul>
 </li>
-<li>Create a file called <code>image1.html</code><ol>
-<li>Add the html template again:</li>
-</ol>
-</li>
 </ul>
-<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml"><span class="sunlight-doctype">&lt;!doctype&#xA0;html&gt;</span>
+</li>
+<li>Now that you have a basic landing page, create the individual pages where the images will be displayed.<ul>
+<li>Create a file called <code>image1.html</code></li>
+</ul>
+</li>
+<li><p>Add the html template again:</p>
+<pre><code class="lang-html"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-xml sunlight-highlighted"><span class="sunlight-xml">&#xA0;<span class="sunlight-doctype">&lt;!doctype&#xA0;html&gt;</span>
 
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">html</span>&#xA0;<span class="sunlight-attribute">lang</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;en&quot;</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">charset</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;utf-8&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">html</span>&#xA0;<span class="sunlight-attribute">lang</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;en&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">charset</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;utf-8&quot;</span><span class="sunlight-operator">&gt;</span>
 
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>Add&#xA0;title&#xA0;here<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;description&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;description&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;author&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;author&#xA0;name&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>Add&#xA0;title&#xA0;here<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">title</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;description&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;description&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">meta</span>&#xA0;<span class="sunlight-attribute">name</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;author&quot;</span>&#xA0;<span class="sunlight-attribute">content</span><span class="sunlight-operator">=</span><span class="sunlight-string">&quot;add&#xA0;author&#xA0;name&#xA0;here&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">head</span><span class="sunlight-operator">&gt;</span>
 
-<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
-&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>Hello&#xA0;World<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
-<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">html</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">&lt;</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>Hello&#xA0;World<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">p</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">body</span><span class="sunlight-operator">&gt;</span>
+&#xA0;<span class="sunlight-operator">&lt;/</span><span class="sunlight-tagName">html</span><span class="sunlight-operator">&gt;</span>
 </span></pre></div></div></code></pre>
-<ol>
-<li>Now create a space for the image with the <code>&lt;img/&gt;</code> tag.</li>
+</li>
+<li><p>Now create a space for the image with the <code>&lt;img/&gt;</code> tag.</p>
+</li>
 <li>But this time using the IIIF API make the image big.</li>
 <li>Provide some other cropped views of the image that focus on specific regions of the image</li>
 <li>Make sure to add metadata.</li>
@@ -751,47 +750,7 @@
 <li>What kind of interactions with your images did you want to have that were difficult to achieve?</li>
 <li>What kinds of metadata is required for your viewer that is not necessarily visualized? E.g. How do your images relate to each other? How is that information used in your viewer?</li>
 </ul>
-<h2 id="break">Break</h2>
-<h2 id="introduction-to-image-libraries">Introduction to Image Libraries.</h2>
-<h3 id="openseadragon">Openseadragon</h3>
-<h2 id="activity-description">Activity Description</h2>
-<p>In this activity we want to start combining IIIF we re-usable libraries that allow us to do more advanced things. In this activity we are going to add the library openseadragon.js to a basic webpage and provide it with information from a IIIF server that it can use to display images.</p>
-<h4 id="instructions">Instructions</h4>
-<ul>
-<li>Create a new html page (e.g. seadragon-demo.html)</li>
-<li>Add the Seadragon Library<ul>
-<li><code>&lt;script
-src=&quot;https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.3.1/openseadragon.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></li>
-</ul>
-</li>
-<li>Add jquery libary (so you can easily request other files, such as info.json file)<ul>
-<li><code>&lt;script
-src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
-integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
-crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></li>
-</ul>
-</li>
-<li>Add an empty div for the openseadragon to create a view port<ul>
-<li><code>&lt;div id=&quot;myImage&quot; style=&quot;width: 400px&quot;&gt;&lt;/div&gt;</code></li>
-</ul>
-</li>
-<li>Create a basic openseadragon object</li>
-</ul>
-<pre><code class="lang-javascript"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-javascript sunlight-highlighted"><span class="sunlight-javascript">&#xA0;&#xA0;<span class="sunlight-reservedWord">const</span>&#xA0;<span class="sunlight-ident">imageurl</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-comment">//path&#xA0;to&#xA0;info.json&#xA0;file</span>
-&#xA0;&#xA0;<span class="sunlight-ident">$</span><span class="sunlight-operator">.</span><span class="sunlight-ident">get</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">imageUrl</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-keyword">function</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;get&#xA0;tile&#xA0;from&#xA0;infojson&#xA0;and&#xA0;pass&#xA0;them&#xA0;to&#xA0;openseadragon</span>
-&#xA0;&#xA0;<span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">[</span><span class="sunlight-string">&quot;tiles&quot;</span><span class="sunlight-punctuation">]</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-punctuation">{</span><span class="sunlight-string">&quot;scaleFactors&quot;</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-number">1</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">2</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">4</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-number">8</span><span class="sunlight-punctuation">]</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-string">&quot;width&quot;</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-number">300</span><span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">]</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">var</span>&#xA0;<span class="sunlight-ident">viewer</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-ident">OpenSeadragon</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">id</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-string">&quot;myImage&quot;</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">tileSources</span><span class="sunlight-operator">:</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-ident">infojson</span><span class="sunlight-punctuation">]</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-&#xA0;&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
-<h3 id="leaflet">Leaflet</h3>
-<h4 id="activity-description">Activity Description</h4>
-<p>In this activity, we&apos;re going to repeat the above task with a different library called leaflet-iiif.js</p>
-<h4 id="instructions">Instructions</h4>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-05 07:07:05</div><div class="created">Created by Jeffrey C. Witt 2018-06-05 07:07:05</div></div>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-05 08:25:52</div><div class="created">Created by Jeffrey C. Witt 2018-06-05 07:07:05</div></div>
                                 
                                 </section>
                             
@@ -834,7 +793,7 @@ crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building a Simple Gallery Viewer From Scratch","level":"3.2.1","depth":2,"next":{"title":"Adding Open Seadragon","level":"3.2.2","depth":2,"path":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","ref":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","articles":[]},"previous":{"title":"Building a Simple Gallery Viewer","level":"3.2","depth":1,"path":"day-two/0-building-a-gallery-viewer-intro.md","ref":"day-two/0-building-a-gallery-viewer-intro.md","articles":[{"title":"Building a Simple Gallery Viewer From Scratch","level":"3.2.1","depth":2,"path":"day-two/1-building-a-gallery-viewer.md","ref":"day-two/1-building-a-gallery-viewer.md","articles":[]},{"title":"Adding Open Seadragon","level":"3.2.2","depth":2,"path":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","ref":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","articles":[]},{"title":"Adding Leaflet","level":"3.2.3","depth":2,"path":"day-two/3-building-a-gallery-viewer-with-leaflet.md","ref":"day-two/3-building-a-gallery-viewer-with-leaflet.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/1-building-a-gallery-viewer.md","mtime":"2018-06-05T14:08:23.212Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-05T14:08:52.125Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Building a Simple Gallery Viewer From Scratch","level":"3.2.1","depth":2,"next":{"title":"Adding Open Seadragon","level":"3.2.2","depth":2,"path":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","ref":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","articles":[]},"previous":{"title":"Building a Simple Gallery Viewer","level":"3.2","depth":1,"path":"day-two/0-building-a-gallery-viewer-intro.md","ref":"day-two/0-building-a-gallery-viewer-intro.md","articles":[{"title":"Building a Simple Gallery Viewer From Scratch","level":"3.2.1","depth":2,"path":"day-two/1-building-a-gallery-viewer.md","ref":"day-two/1-building-a-gallery-viewer.md","articles":[]},{"title":"Adding Open Seadragon","level":"3.2.2","depth":2,"path":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","ref":"day-two/2-building-a-gallery-viewer-with-opensea-dragon.md","articles":[]},{"title":"Adding Leaflet","level":"3.2.3","depth":2,"path":"day-two/3-building-a-gallery-viewer-with-leaflet.md","ref":"day-two/3-building-a-gallery-viewer-with-leaflet.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-two/1-building-a-gallery-viewer.md","mtime":"2018-06-05T15:47:25.976Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-05T15:47:52.588Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
