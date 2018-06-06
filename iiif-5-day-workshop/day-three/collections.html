@@ -535,21 +535,6 @@
             
         </li>
     
-        <li class="chapter " data-level="4.5" data-path="search.html">
-            
-                <a href="search.html">
-            
-                    
-                        <b>4.5.</b>
-                    
-                    Search
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -641,37 +626,36 @@
                                 
                                 <h1 id="collections">Collections</h1>
 <h2 id="description">Description</h2>
-<h4 id="collection-tree-navigator-for-mirador">Collection Tree Navigator for Mirador</h4>
-<p>This feature came about to address the need of showing objects in nested collections to ease navigation and avoid server slow-down. Collection-level manifests are often very large and can contain many sub-collections within them. As such, it became important for users to navigate through collections easily and without losing context.</p>
-<p>See the code for Collection Tree <a href="https://github.com/utlib/mirador/tree/develop_collection_tree_lazy" target="_blank">here</a></p>
-<p>Allows users to:</p>
+<p>Collections are away to organize manifests into groups, allow us the ability to share groups of manifest with a single URL.</p>
+<h2 id="collection-tree-navigator-for-mirador">Collection Tree Navigator for Mirador</h2>
+<p>The collection tree navigator for Mirador came about to address the need of showing objects in nested collections to ease navigation and avoid server slow-down. Collection-level manifests are often very large and can contain many sub-collections within them. As such, it became important for users to navigate through collections easily and without losing context.</p>
+<p>The aeature allows users to:</p>
 <ul>
 <li>View entire collections with sub-collections in a tree structure on manifest selection panel</li>
 <li>Easily navigate across collections</li>
 </ul>
-<p>Demo</p>
-<p>You can view Mirador advanced features <a href="http://projectmirador.org/demo/advanced_features.html" target="_blank">here</a></p>
 <h2 id="activity">Activity</h2>
-<p>Let&apos;s create your own collection</p>
-<ul>
+<p>Let&apos;s create your and serve your own collection</p>
+<ol>
 <li>Find at least five manifests and organize them into a collection, following the IIIF guidelines<ul>
 <li><a href="http://iiif.io/api/presentation/2.1/#collection" target="_blank">http://iiif.io/api/presentation/2.1/#collection</a></li>
 </ul>
 </li>
-<li>Then configure mirador to load a collections<ul>
-<li><code>&quot;data&quot;: [
-  { &quot;collectionUri&quot;: &quot;https://scta.info/iiif/scta/collection&quot;}
-]</code></li>
-</ul>
+<li>Save your collection as <code>mycollection.json</code> in the <code>myManifests</code> folder on your Desktop.</li>
+<li>Server your manifests and collections with <code>$ http-server --cors</code></li>
+<li><p>In the <code>example.html</code> file in the Mirador directory file configure mirador to load a collection.</p>
+<pre><code class="lang-json"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-json sunlight-highlighted"><span class="sunlight-plaintext">&#xA0;&quot;data&quot;:&#xA0;[
+&#xA0;&#xA0;&#xA0;{&#xA0;&quot;collectionUri&quot;:&#xA0;&quot;https://localhost:8080/mycollection.json&quot;}
+&#xA0;]
+</span></pre></div></div></code></pre>
+<p>1 Configure mirador to allow to browse your collection by changing the manifestsPanel module to the CollectionTreeManifestsPanel&quot;</p>
+<pre><code class="lang-json"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-json sunlight-highlighted"><span class="sunlight-plaintext">&#xA0;&quot;manifestsPanel&quot;:&#xA0;{
+&#xA0;&#xA0;&#xA0;&quot;module&quot;:&#xA0;&quot;CollectionTreeManifestsPanel&quot;,
+&#xA0;&#xA0;&#xA0;}
+</span></pre></div></div></code></pre>
 </li>
-<li>Configure mirador to allow to browse your collection by changing the manifestsPanel module to the CollectionTreeManifestsPanel&quot;<ul>
-<li><code>&quot;manifestsPanel&quot;: {
-  &quot;module&quot;: &quot;&quot;CollectionTreeManifestsPanel&quot;,
-  }</code></li>
-</ul>
-</li>
-</ul>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-05-29 12:52:05</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
+</ol>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Jeffrey C. Witt 2018-06-06 06:30:08</div><div class="created">Created by Jeffrey C. Witt 2018-04-24 12:51:45</div></div>
                                 
                                 </section>
                             
@@ -714,7 +698,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Collections","level":"4.3","depth":1,"next":{"title":"Ranges","level":"4.4","depth":1,"path":"day-three/ranges.md","ref":"day-three/ranges.md","articles":[]},"previous":{"title":"Annotations, AnnotationLists","level":"4.2","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/collections.md","mtime":"2018-06-05T16:01:29.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-05T17:48:15.580Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Collections","level":"4.3","depth":1,"next":{"title":"Ranges","level":"4.4","depth":1,"path":"day-three/ranges.md","ref":"day-three/ranges.md","articles":[]},"previous":{"title":"Annotations, AnnotationLists","level":"4.2","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/collections.md","mtime":"2018-06-06T14:05:53.575Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-06T14:06:23.937Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
