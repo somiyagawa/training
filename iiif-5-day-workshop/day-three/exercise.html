@@ -675,70 +675,70 @@
 <p>This example is taken from a manifest and question Ethan Gruber of the American Numismatic Society had in the IIIF Slack.</p>
 </blockquote>
 <p>Here is a manifest we&apos;ll use as our starting point for working with annotations (you can also find this file here: <a href="https://gist.github.com/hadro/c499d26943c45bf38eacfaed07b0a8ea" target="_blank">https://gist.github.com/hadro/c499d26943c45bf38eacfaed07b0a8ea</a>)</p>
-<pre><code class="lang-{"><div class="sunlight-container sunlight-theme-gitbook"><div class="sunlight-code-container"><pre class="sunlight-highlight-{ sunlight-highlighted"><span class="sunlight-plaintext">&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/presentation/2/context.json&quot;,
-&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://localhost:8887/coin-before.json&quot;,
-&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Manifest&quot;,
-&#xA0;&#xA0;&quot;attribution&quot;:&#xA0;&quot;American&#xA0;Numismatic&#xA0;Society&quot;,
-&#xA0;&#xA0;&quot;label&quot;:&#xA0;&quot;Price&#xA0;3210&quot;,
-&#xA0;&#xA0;&quot;description&quot;:&#xA0;&quot;Obverse:&#xA0;Head&#xA0;of&#xA0;beardless&#xA0;Heracles&#xA0;right&#xA0;wearing&#xA0;lion&#xA0;skin&#xA0;headdress\nReverse:&#xA0;&#x391;&#x39B;&#x395;&#x39E;&#x391;&#x39D;&#x394;&#x3A1;&#x39F;&#x3A5;&#xA0;-&#xA0;Zeus&#xA0;seated&#xA0;on&#xA0;stool-throne&#xA0;left,&#xA0;eagle&#xA0;on&#xA0;outstretched&#xA0;right&#xA0;hand,&#xA0;sceptre&#xA0;in&#xA0;left&#xA0;hand&quot;,
-&#xA0;&#xA0;&quot;sequences&quot;:&#xA0;[
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Sequence&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;label&quot;:&#xA0;&quot;Default&#xA0;sequence&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;canvases&quot;:&#xA0;[
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://localhost:8887/coin/canvas&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;sc:Canvas&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;label&quot;:&#xA0;&quot;[Monnaie&#xA0;:&#xA0;T&#xE9;tradrachme,&#xA0;Argent,&#xA0;Damascus,&#xA0;Ko&#xEF;l&#xE9;&#xA0;Syrie,&#xA0;Alexandre&#xA0;III&#xA0;Le&#xA0;Grand]&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;height&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;width&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;images&quot;:&#xA0;[
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;oa:Annotation&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;motivation&quot;:&#xA0;&quot;sc:painting&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;on&quot;:&#xA0;&quot;http://localhost:8887/coin/canvas&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;resource&quot;:&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;label&quot;:&#xA0;&quot;Obverse&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1/full/full/0/native.jpg&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;dctypes:Image&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;format&quot;:&#xA0;&quot;image/jpeg&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;height&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;width&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;service&quot;:&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/image/1/context.json&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;profile&quot;:&#xA0;&quot;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&quot;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;},
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;oa:Annotation&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;motivation&quot;:&#xA0;&quot;sc:painting&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;on&quot;:&#xA0;&quot;http://localhost:8887/coin/canvas&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;resource&quot;:&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;label&quot;:&#xA0;&quot;Reverse&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2/full/full/0/native.jpg&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@type&quot;:&#xA0;&quot;dctypes:Image&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;format&quot;:&#xA0;&quot;image/jpeg&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;height&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;width&quot;:&#xA0;2610,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;service&quot;:&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@context&quot;:&#xA0;&quot;http://iiif.io/api/image/1/context.json&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;@id&quot;:&#xA0;&quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&quot;,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;profile&quot;:&#xA0;&quot;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&quot;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;]
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;]
-&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;]
+<pre><code>{
+  &quot;@context&quot;: &quot;http://iiif.io/api/presentation/2/context.json&quot;,
+  &quot;@id&quot;: &quot;http://localhost:8887/coin-before.json&quot;,
+  &quot;@type&quot;: &quot;sc:Manifest&quot;,
+  &quot;attribution&quot;: &quot;American Numismatic Society&quot;,
+  &quot;label&quot;: &quot;Price 3210&quot;,
+  &quot;description&quot;: &quot;Obverse: Head of beardless Heracles right wearing lion skin headdress\nReverse: &#x391;&#x39B;&#x395;&#x39E;&#x391;&#x39D;&#x394;&#x3A1;&#x39F;&#x3A5; - Zeus seated on stool-throne left, eagle on outstretched right hand, sceptre in left hand&quot;,
+  &quot;sequences&quot;: [
+    {
+      &quot;@type&quot;: &quot;sc:Sequence&quot;,
+      &quot;label&quot;: &quot;Default sequence&quot;,
+      &quot;canvases&quot;: [
+        {
+          &quot;@id&quot;: &quot;http://localhost:8887/coin/canvas&quot;,
+          &quot;@type&quot;: &quot;sc:Canvas&quot;,
+          &quot;label&quot;: &quot;[Monnaie : T&#xE9;tradrachme, Argent, Damascus, Ko&#xEF;l&#xE9; Syrie, Alexandre III Le Grand]&quot;,
+          &quot;height&quot;: 2610,
+          &quot;width&quot;: 2610,
+          &quot;images&quot;: [
+            {
+              &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&quot;,
+              &quot;@type&quot;: &quot;oa:Annotation&quot;,
+              &quot;motivation&quot;: &quot;sc:painting&quot;,
+              &quot;on&quot;: &quot;http://localhost:8887/coin/canvas&quot;,
+              &quot;resource&quot;: {
+                &quot;label&quot;: &quot;Obverse&quot;,
+                &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1/full/full/0/native.jpg&quot;,
+                &quot;@type&quot;: &quot;dctypes:Image&quot;,
+                &quot;format&quot;: &quot;image/jpeg&quot;,
+                &quot;height&quot;: 2610,
+                &quot;width&quot;: 2610,
+                &quot;service&quot;: {
+                  &quot;@context&quot;: &quot;http://iiif.io/api/image/1/context.json&quot;,
+                  &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&quot;,
+                  &quot;profile&quot;: &quot;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&quot;
+                }
+              }
+            },
+            {
+              &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&quot;,
+              &quot;@type&quot;: &quot;oa:Annotation&quot;,
+              &quot;motivation&quot;: &quot;sc:painting&quot;,
+              &quot;on&quot;: &quot;http://localhost:8887/coin/canvas&quot;,
+              &quot;resource&quot;: {
+                &quot;label&quot;: &quot;Reverse&quot;,
+                &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2/full/full/0/native.jpg&quot;,
+                &quot;@type&quot;: &quot;dctypes:Image&quot;,
+                &quot;format&quot;: &quot;image/jpeg&quot;,
+                &quot;height&quot;: 2610,
+                &quot;width&quot;: 2610,
+                &quot;service&quot;: {
+                  &quot;@context&quot;: &quot;http://iiif.io/api/image/1/context.json&quot;,
+                  &quot;@id&quot;: &quot;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&quot;,
+                  &quot;profile&quot;: &quot;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&quot;
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
-</span></pre></div></div></code></pre>
-<p>Try it! </p>
+</code></pre><p>Try it! </p>
 <p>Copy the manifest above and save it to your dhsi2019 folder with the filename &quot;coin.json&quot;.</p>
 <p>Now, to be able to view it from our local machine, we&apos;ll need a simple web server.</p>
 <hr>
@@ -838,7 +838,7 @@ Where in the coin.json manifest do you need to change that value for the canvas?
 <li>Can you have more than one annotation list? (Hint: read through what the specs say about including annotation lists)</li>
 </ul>
 <p>Finally, if that&apos;s all working for you, think through then how you might incorporate annotation lists into your own manifest and projects, and in what whay they might be useful to you.</p>
-<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Josh Hadro 2019-06-05 00:24:01</div><div class="created">Created by Josh Hadro 2019-06-05 00:24:01</div></div>
+<div class="git-author-container git-author-bottom"><div class="modified">Last modified by Glen Robson 2019-06-05 11:25:24</div><div class="created">Created by Josh Hadro 2019-06-05 00:24:01</div></div>
                                 
                                 </section>
                             
@@ -881,7 +881,7 @@ Where in the coin.json manifest do you need to change that value for the canvas?
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Annotations Exercise","level":"4.2.1","depth":2,"next":{"title":"Annotating with Mirador","level":"4.2.2","depth":2,"path":"day-three/annotations-exercises.md","ref":"day-three/annotations-exercises.md","articles":[]},"previous":{"title":"Annotations, AnnotationLists","level":"4.2","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[{"title":"Annotations Exercise","level":"4.2.1","depth":2,"path":"day-three/exercise.md","ref":"day-three/exercise.md","articles":[]},{"title":"Annotating with Mirador","level":"4.2.2","depth":2,"path":"day-three/annotations-exercises.md","ref":"day-three/annotations-exercises.md","articles":[]},{"title":"Annotating Stores","level":"4.2.3","depth":2,"path":"day-three/annotations-stores.md","ref":"day-three/annotations-stores.md","articles":[]},{"title":"Annotating Stores - Results","level":"4.2.4","depth":2,"path":"day-three/annotations-stores-results.md","ref":"day-three/annotations-stores-results.md","articles":[]},{"title":"Annotating Stores - Do it yourself","level":"4.2.5","depth":2,"path":"day-three/annotations-stores-install.md","ref":"day-three/annotations-stores-install.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/exercise.md","mtime":"2019-06-05T12:09:48.326Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-05T16:08:24.673Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Annotations Exercise","level":"4.2.1","depth":2,"next":{"title":"Annotating with Mirador","level":"4.2.2","depth":2,"path":"day-three/annotations-exercises.md","ref":"day-three/annotations-exercises.md","articles":[]},"previous":{"title":"Annotations, AnnotationLists","level":"4.2","depth":1,"path":"day-three/annotations-and-annotation-lists.md","ref":"day-three/annotations-and-annotation-lists.md","articles":[{"title":"Annotations Exercise","level":"4.2.1","depth":2,"path":"day-three/exercise.md","ref":"day-three/exercise.md","articles":[]},{"title":"Annotating with Mirador","level":"4.2.2","depth":2,"path":"day-three/annotations-exercises.md","ref":"day-three/annotations-exercises.md","articles":[]},{"title":"Annotating Stores","level":"4.2.3","depth":2,"path":"day-three/annotations-stores.md","ref":"day-three/annotations-stores.md","articles":[]},{"title":"Annotating Stores - Results","level":"4.2.4","depth":2,"path":"day-three/annotations-stores-results.md","ref":"day-three/annotations-stores-results.md","articles":[]},{"title":"Annotating Stores - Do it yourself","level":"4.2.5","depth":2,"path":"day-three/annotations-stores-install.md","ref":"day-three/annotations-stores-install.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include","theme-default","toggle-chapters","git-author","-highlight","sunlight-highlighter","toggle-chapters"],"styles":{},"pluginsConfig":{"git-author":{"position":"bottom","modifyTpl":"Last modified by {user} {timeStamp}","createTpl":"Created by {user} {timeStamp}","timeStampFormat":"YYYY-MM-DD HH:mm:ss"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"sunlight-highlighter":{"lineNumbers":false,"theme":"gitbook"},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"IIIF 5 Day Workshop","gitbook":"3.2.3"},"file":{"path":"day-three/exercise.md","mtime":"2019-06-05T18:24:41.557Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-05T18:26:12.384Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
