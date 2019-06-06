@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Annotation Exercise</title>
+</head>
+<body>
+
+<div id="body-inner">
+
+          
+          
+          <div class="notices info">
+  <p>
+    This is a beta version of migrating these workshop materials to a new platform. If you run into issues please <a href="https://github.com/jronallo/iiif-workshop-new/issues" target="_blank">file an issue</a> or click on the edit link above and submit a pull request. You can use the <a href="http://ronallo.com/iiif-workshop" target="_blank">previous version of the workshop materials</a> as a fallback.
+  </p>
+</div>
+
+
+          
+            <h1>Multiple Images Exercises</h1>
+          
+
+        
+
+
+
+
+<p>We&rsquo;ll now do an exercise we&rsquo;re going to take an existing manifest and modify it to add two images next to each other on the same canvas.</p>
+
+<p>Here&rsquo;s our beginning manifest:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;@context&#34;</span>: <span style="color:#e6db74">&#34;http://iiif.io/api/presentation/2/context.json&#34;</span>,
+  <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000/coin-before.json&#34;</span>,
+  <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;sc:Manifest&#34;</span>,
+  <span style="color:#f92672">&#34;attribution&#34;</span>: <span style="color:#e6db74">&#34;American Numismatic Society&#34;</span>,
+  <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Price 3210&#34;</span>,
+  <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Obverse: Head of beardless Heracles right wearing lion skin headdress\nReverse: ΑΛΕΞΑΝΔΡΟΥ - Zeus seated on stool-throne left, eagle on outstretched right hand, sceptre in left hand&#34;</span>,
+  <span style="color:#f92672">&#34;sequences&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;sc:Sequence&#34;</span>,
+      <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Default sequence&#34;</span>,
+      <span style="color:#f92672">&#34;canvases&#34;</span>: [
+        {
+          <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000/coin/canvas&#34;</span>,
+          <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;sc:Canvas&#34;</span>,
+          <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;[Monnaie : Tétradrachme, Argent, Damascus, Koïlé Syrie, Alexandre III Le Grand]&#34;</span>,
+          <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">2610</span>,
+          <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">2610</span>,
+          <span style="color:#f92672">&#34;images&#34;</span>: [
+            {
+              <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&#34;</span>,
+              <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;oa:Annotation&#34;</span>,
+              <span style="color:#f92672">&#34;motivation&#34;</span>: <span style="color:#e6db74">&#34;sc:painting&#34;</span>,
+              <span style="color:#f92672">&#34;on&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000/coin/canvas&#34;</span>,
+              <span style="color:#f92672">&#34;resource&#34;</span>: {
+                <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Obverse&#34;</span>,
+                <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1/full/full/0/native.jpg&#34;</span>,
+                <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;dctypes:Image&#34;</span>,
+                <span style="color:#f92672">&#34;format&#34;</span>: <span style="color:#e6db74">&#34;image/jpeg&#34;</span>,
+                <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">2610</span>,
+                <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">2610</span>,
+                <span style="color:#f92672">&#34;service&#34;</span>: {
+                  <span style="color:#f92672">&#34;@context&#34;</span>: <span style="color:#e6db74">&#34;http://iiif.io/api/image/1/context.json&#34;</span>,
+                  <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1&#34;</span>,
+                  <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&#34;</span>
+                }
+              }
+            },
+            {
+              <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&#34;</span>,
+              <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;oa:Annotation&#34;</span>,
+              <span style="color:#f92672">&#34;motivation&#34;</span>: <span style="color:#e6db74">&#34;sc:painting&#34;</span>,
+              <span style="color:#f92672">&#34;on&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000/coin/canvas&#34;</span>,
+              <span style="color:#f92672">&#34;resource&#34;</span>: {
+                <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Reverse&#34;</span>,
+                <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2/full/full/0/native.jpg&#34;</span>,
+                <span style="color:#f92672">&#34;@type&#34;</span>: <span style="color:#e6db74">&#34;dctypes:Image&#34;</span>,
+                <span style="color:#f92672">&#34;format&#34;</span>: <span style="color:#e6db74">&#34;image/jpeg&#34;</span>,
+                <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">2610</span>,
+                <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">2610</span>,
+                <span style="color:#f92672">&#34;service&#34;</span>: {
+                  <span style="color:#f92672">&#34;@context&#34;</span>: <span style="color:#e6db74">&#34;http://iiif.io/api/image/1/context.json&#34;</span>,
+                  <span style="color:#f92672">&#34;@id&#34;</span>: <span style="color:#e6db74">&#34;http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f2&#34;</span>,
+                  <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2&#34;</span>
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre></div>
+
+<!-- #todo:0 make "copy the above manifest" into a link to the manifest -->
+
+<ol>
+<li><p><a href="http://ronallo.com/iiif-workshop-new/manifests/coin-before.json">Copy the above manifest</a> into a file named &ldquo;coin.json&rdquo; and place it next to your &ldquo;manifest.json&rdquo; file in the <a href="http://ronallo.com/iiif-workshop-new/preparation/directory.html">&ldquo;iiif-workshop&rdquo; directory</a> you&rsquo;re using for your <a href="http://ronallo.com/iiif-workshop-new/preparation/web-server.html">web server</a>.</p></li>
+
+<li><p>Make sure you can open the JSON at <a href="http://localhost:3000/coin.json">http://localhost:3000/coin.json</a></p></li>
+
+<li><p>Drag this coin onto Mirador below. (You may need to do this twice.)</p></li>
+</ol>
+
+<p><a href="http://localhost:3000/coin?manifest=http%3A%2F%2Flocalhost%3A3000%2Fcoin.json"><img src="http://gallica.bnf.fr/iiif/ark:/12148/btv1b8499946f/f1/full/150,/0/native.jpg" alt="" /></a></p>
+
+<iframe id="iframe-demo" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="" src="mirador.html" style="width:100%" height="600" frameborder="10">You need an iFrame capable browser to view this.</iframe>
+
+
+<p>This manifest already has two images on the single canvas. When you view it in Mirador only one shows up. The last image annotated onto the canvas covers over the the first image.</p>
+
+<p>To see the other side of the coin open up the layers panel in Mirador and turn off the visibility of the second image.</p>
+
+<p>Here&rsquo;s a video of what this ought to look like:</p>
+
+<video src="http://ronallo.com/iiif-workshop-new/video/coin-before.mp4" preload="auto" controls></video>
+
+<h2 id="modifying-the-manifest">Modifying the Manifest</h2>
+
+<p>We now want these to show up side-by-side on the same canvas. As you make changes you may need to clear your cache, reload the page, and drag the coin.json manifest back into Mirador.</p>
+
+<p>You&rsquo;ll need to do two things:</p>
+
+<ol>
+<li><p>Change the dimensions of the canvas so that it can hold two images that are each 2610 pixels wide by 2610 pixels high.</p>
+
+<blockquote>
+<p>What&rsquo;s the width of the canvas needed to hold both images side-by-side?</p>
+</blockquote></li>
+
+<li><p>Annotate each image onto a region of the canvas.</p>
+
+<blockquote>
+<p>Change the <code>on</code> property to include information for where on the canvas the image ought to be placed. See the previous page in these materials for more information on how to do this.</p>
+
+<p>Consider taking a piece of paper to sketch out the layout and do the math. Note that counting pixels starts a zero.</p>
+</blockquote></li>
+</ol>
+
+<hr />
+
+<h2 id="answer">Answer</h2>
+
+<ol>
+<li>The width of the final canvas should be 5220 pixels wide.</li>
+
+<li><p>The first image should be off to the left and the second image to the right using these values at the end of the <code>on</code> parameter for each image.</p>
+
+<ul>
+<li>first image: <code>#xywh=0,0,2610,2610</code></li>
+<li>second image: <code>#xywh=2610,0,2610,2610</code></li>
+</ul></li>
+</ol>
+
+<p><a href="http://ronallo.com/iiif-workshop-new/manifests/coin-after.json">Get the final manifest here</a>. Copy it as &ldquo;coin.json&rdquo; and load it into Mirador again.</p>
+
+<p>In the end ought to see something like the following:</p>
+
+<p><img src="http://ronallo.com/iiif-workshop-new/images/coin-side-by-side.png" alt="" /></p>
+
+<blockquote>
+<p>This example is taken from a manifest and question Ethan Gruber of the American Numismatic Society had in the IIIF Slack.</p>
+</blockquote>
+
+<!-- #todo:180 consider adding this viewer which displays it correctly http://www.kanzaki.com/works/2016/pub/image-annotator -->
+
+
+
+        
+        </div> 
+        
+
+
+</body>
+</html>
