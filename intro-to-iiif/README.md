@@ -1,6 +1,10 @@
-# Introduction to IIIF
+# IIIF入門 Introduction to IIIF
+
+このガイドでは、IIIF（International Image Interoperability Framework）のツール、標準、およびコミュニティの概要について説明します。一連の具体的な例と対話型のデモとして、幅広いトピックをカバーします。
 In this guide, we'll be walking you through getting started with the International Image Interoperability Framework (IIIF) tools, standards, and community. We'll cover a wide range of topics as a string of concrete examples and interactive demonstrations. 
 
+IIIFの基本的な概念の概要とその利点から始めて、次にIIIFでどのようなコンテンツを強化できるか、そして既存のコンテンツを見つけて対話できる場所を見ます。それに続いて、IIIF対応のイメージサーバーを介してイメージコンテンツを公開する方法を説明し、さまざまなサーバーオプションと制作上の懸念を紹介してから、視聴者とクライアントについて説明します。 LeafletとOpenSeadragonの画像ビューアのデモを行い、次にIIIFプレゼンテーションAPIを紹介します。これにより、デジタル化された本、保護写真コレクション、アーカイブ文書構造などの画像の構造化コレクションと対話するための高度な機能をユーザに提供できます。次に、MiradorやUniversal Viewerなど、IIIF Presentation API対応の複数のビューアを介してこれらのリソースを公開する方法について説明します。
 Starting with a basic conceptual overview of IIIF and its benefits, we'll then look at what content can be enhanced with IIIF and where you can find and interact with existing content. Following that, we'll walk through how to expose your image content through a IIIF-enabled image server, introduce you to the many server options and production concerns, and then talk about viewers and clients. We'll demonstrate the Leaflet and OpenSeadragon image viewers, and then introduce the IIIF Presentation API, which allows you to provide your users advanced features for interacting with structured collections of images, such as digitised books, conservation photography collections, and archival document structures. We'll then show how you can expose these resources through several IIIF Presentation API-enabled viewers, including Mirador and the Universal Viewer.
 
+このガイドの残りの部分では、対話型の一連の質問と回答を紹介し、さらに詳しい情報を入手できる場所について説明します。 IIIFで間もなく提供されるその他のユースケースと仕様のいくつか、およびコミュニティでより積極的に参加する方法についての言及で終わります。
 The remainder of this guide will be a series of interactive questions and answers, with guidance on where you can go for more information. We end with a mention of some of the other use cases and specifications coming soon in IIIF and how to become more involved in the community.
